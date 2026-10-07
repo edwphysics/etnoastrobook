@@ -1,0 +1,38 @@
+filename output pleiades.tex
+switch pdf_output on
+
+set center_rectascension 3.78
+set center_declination 24.28
+set box_width 15
+set box_height 15
+
+# Scale in degrees per cm; 2.0 gives a wider field than 1.33
+set grad_per_cm 2.0
+
+set faintest_star_magnitude 10.0
+
+# White background and black stars
+color background 1 1 1
+switch colored_stars off
+color stars 0 0 0
+color text_labels 0 0 0
+
+# Constellation lines and boundaries
+switch constellation_lines on
+color constellation_lines 0 0 0
+switch boundaries on
+color boundaries 0 0 0
+color highlighted_boundaries 0 0 0
+
+# Hide automatic labels, coordinate grid, ecliptic, and nebulae
+switch labels on
+switch grid off
+switch ecliptic off
+switch nebulae off
+
+# Suppress automatic star names while retaining the manual Taurus label
+set faintest_star_with_label_magnitude -10.0
+
+objects_and_labels
+#text "\\Large\\bfseries Tauro" at 4.31 18.31 color 0 0 0 ;
+text "\\Large\\bfseries Pleiades" at 3.93 25.5 color 0 0 0 ;
