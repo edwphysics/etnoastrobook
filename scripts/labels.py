@@ -40,6 +40,7 @@ def calculate_top_left_coords(pp3_filename, margin_cm=0.8):
 
     ra_offset = half_width_deg / (15.0 * cos_dec)
     ra_left = (ra_center + ra_offset) % 24.0
+    ra_tick_start = (math.floor((ra_left % 24.0) * 2) / 2) % 24.0
 
     # Preserve the existing constellation label and its styling.
     title_pattern = re.compile(
@@ -74,7 +75,7 @@ def calculate_top_left_coords(pp3_filename, margin_cm=0.8):
     # Python turns each \\\\ into two literal backslashes in the PP3 file.
     ra_marker = (
         'text "$#3{\\\\rm h}#4{\\\\rm m}$" at '
-        f"{ra_center:.4f} {dec_bottom:.4f} along declination\n"
+        f"{ra_tick_start:.4f} {dec_bottom:.4f} along declination\n"
         "    tics rectascension 0.5 towards S ;"
     )
 

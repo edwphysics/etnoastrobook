@@ -37,7 +37,7 @@ set faintest_star_with_label_magnitude -10.0
 
 objects_and_labels
 
-text "$#3{\\rm h}#4{\\rm m}$" at 5.1600 -13.0700 along declination
+text "$#3{\\rm h}#4{\\rm m}$" at 6.0000 -13.0700 along declination
     tics rectascension 0.5 towards S ;
 
 text "$#5^\\circ$" at 6.0533 0.3300 along declination
