@@ -176,7 +176,7 @@ def generate_zoom_plot(
         points,
         closed=True,
         fill=False,
-        edgecolor="black",
+        edgecolor="gray",
         linewidth=0.8,
         linestyle="--",
     )
@@ -203,7 +203,7 @@ def generate_zoom_plot(
             xyB=inset_point,
             coordsB=ax_inset.transAxes,
             linestyle="--",
-            color="black",
+            color="gray",
             linewidth=0.6,
         )
         fig.add_artist(connector)

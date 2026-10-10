@@ -1,81 +1,115 @@
-import sys
-import re
 import math
+import re
+import sys
 
-def calculate_top_left_coords(pp3_filename, margin_cm=0.8):
-    # Default values in case they aren't explicitly set in the file
-    ra_center = None
-    dec_center = None
-    box_width = None
-    box_height = None
-    grad_per_cm = None
+
+def calculate_top_left_coords(pp3_filename, margin_cm=None):
+    settings = {}
     text_line_found = None
 
-    # Regex patterns to parse pp3 commands
-    ra_pattern = re.compile(r'^\s*set\s+center_rectascension\s+([\d\.-]+)', re.IGNORECASE)
-    dec_pattern = re.compile(r'^\s*set\s+center_declination\s+([\d\.-]+)', re.IGNORECASE)
-    width_pattern = re.compile(r'^\s*set\s+box_width\s+([\d\.-]+)', re.IGNORECASE)
-    height_pattern = re.compile(r'^\s*set\s+box_height\s+([\d\.-]+)', re.IGNORECASE)
-    grad_pattern = re.compile(r'^\s*set\s+grad_per_cm\s+([\d\.-]+)', re.IGNORECASE)
-    text_pattern = re.compile(r'^\s*text\s+(".+?")\s+at\s+[\d\.-]+\s+[\d\.-]+(.*)', re.IGNORECASE)
+    number = r"[+-]?(?:\d+(?:\.\d*)?|\.\d+)"
 
-    with open(pp3_filename, 'r', encoding='utf-8') as f:
-        for line in f:
-            ra_match = ra_pattern.match(line)
-            if ra_match: ra_center = float(ra_match.group(1))
+    setting_patterns = {
+        "center_rectascension": re.compile(
+            rf"^\s*set\s+center_rectascension\s+({number})", re.IGNORECASE
+        ),
+        "center_declination": re.compile(
+            rf"^\s*set\s+center_declination\s+({number})", re.IGNORECASE
+        ),
+        "box_width": re.compile(
+            rf"^\s*set\s+box_width\s+({number})", re.IGNORECASE
+        ),
+        "box_height": re.compile(
+            rf"^\s*set\s+box_height\s+({number})", re.IGNORECASE
+        ),
+        "grad_per_cm": re.compile(
+            rf"^\s*set\s+grad_per_cm\s+({number})", re.IGNORECASE
+        ),
+    }
 
-            dec_match = dec_pattern.match(line)
-            if dec_match: dec_center = float(dec_match.group(1))
+    text_pattern = re.compile(
+        rf'^\s*text\s+("(?:\\.|[^"\\])*")\s+at\s+'
+        rf"{number}\s+{number}(.*)",
+        re.IGNORECASE,
+    )
 
-            width_match = width_pattern.match(line)
-            if width_match: box_width = float(width_match.group(1))
+    with open(pp3_filename, "r", encoding="utf-8") as file:
+        for line in file:
+            for name, pattern in setting_patterns.items():
+                match = pattern.match(line)
+                if match:
+                    settings[name] = float(match.group(1))
 
-            height_match = height_pattern.match(line)
-            if height_match: box_height = float(height_match.group(1))
+            match = text_pattern.match(line)
+            if match:
+                text_line_found = (match.group(1), match.group(2))
 
-            grad_match = grad_pattern.match(line)
-            if grad_match: grad_per_cm = float(grad_match.group(1))
-
-            text_match = text_pattern.match(line)
-            if text_match:
-                text_content = text_match.group(1)
-                remainder = text_match.group(2)
-                text_line_found = (text_content, remainder)
-
-    # Check that all necessary parameters were found
-    params = {'center_rectascension': ra_center, 'center_declination': dec_center, 
-              'box_width': box_width, 'box_height': box_height, 'grad_per_cm': grad_per_cm}
-    missing = [k for k, v in params.items() if v is None]
+    required = (
+        "center_rectascension",
+        "center_declination",
+        "box_width",
+        "box_height",
+        "grad_per_cm",
+    )
+    missing = [name for name in required if name not in settings]
     if missing:
-        raise ValueError(f"Could not find the following parameter(s) in {pp3_filename}: {', '.join(missing)}")
+        raise ValueError(
+            f"Could not find these settings in {pp3_filename}: "
+            + ", ".join(missing)
+        )
 
-    # Calculate offsets with padding margin
+    ra_center = settings["center_rectascension"]
+    dec_center = settings["center_declination"]
+    box_width = settings["box_width"]
+    box_height = settings["box_height"]
+    grad_per_cm = settings["grad_per_cm"]
+
+    if text_line_found:
+        text_str, remainder = text_line_found
+        is_huge = re.search(r"\\+Huge\b", text_str, re.IGNORECASE) is not None
+    else:
+        text_str = r'"\\Huge\\bfseries Title"'
+        remainder = " color 0 0 0 ;"
+        is_huge = True
+
+    # Use a larger inset for Huge labels; pass a margin to override it.
+    if margin_cm is None:
+        margin_cm = 1.3 if is_huge else 0.8
+
     half_height_deg = (box_height / 2.0 - margin_cm) * grad_per_cm
     half_width_deg = (box_width / 2.0 - margin_cm) * grad_per_cm
 
-    # Top Declination
+    if half_height_deg <= 0 or half_width_deg <= 0:
+        raise ValueError("The margin is too large for this chart.")
+
     dec_top = dec_center + half_height_deg
 
-    # Left Right Ascension
-    # Note: In celestial coordinates, RA increases toward the EAST (left side of standard sky maps)
-    ra_left = ra_center + (half_width_deg / (15.0 * math.cos(math.radians(dec_center))))
+    cos_dec = math.cos(math.radians(dec_center))
+    if abs(cos_dec) < 1e-8:
+        raise ValueError("Cannot calculate the RA offset near a celestial pole.")
 
-    # Output result
-    print("\n--- Calculated Coordinates ---")
-    print(f"Top-Left Target RA  : {ra_left:.4f} hours")
-    print(f"Top-Left Target Dec : {dec_top:.4f} degrees\n")
+    ra_left = (
+        ra_center
+        + half_width_deg / (15.0 * cos_dec)
+    ) % 24.0
 
-    if text_line_found:
-        text_str, rest = text_line_found
-        updated_line = f"text {text_str} at {ra_left:.4f} {dec_top:.4f}{rest}"
-        print("--- Updated pp3 Line ---")
-        print(updated_line)
-    else:
-        print("--- Generated pp3 Line ---")
-        print(f'text "\\Large\\bfseries Title" at {ra_left:.4f} {dec_top:.4f} color 0 0 0 ;')
+    updated_line = f"text {text_str} at {ra_left:.4f} {dec_top:.4f}{remainder}"
+
+    print(f"\nMargin used: {margin_cm:.2f} cm")
+    print(f"Top-left target RA : {ra_left:.4f} hours")
+    print(f"Top-left target Dec: {dec_top:.4f} degrees")
+    print("\n--- Updated PP3 line ---")
+    print(updated_line)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python update_pp3_text.py <path_to_pp3_file>")
-    else:
-        calculate_top_left_coords(sys.argv[1])
+        print(
+            "Usage: python update_pp3_text.py "
+            "<path_to_pp3_file> [margin_cm]"
+        )
+        raise SystemExit(1)
+
+    filename = sys.argv[1]
+    margin = float(sys.argv[2]) if len(sys.argv) > 2 else None
+    calculate_top_left_coords(filename, margin)
