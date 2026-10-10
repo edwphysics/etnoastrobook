@@ -66,15 +66,26 @@ def calculate_top_left_coords(pp3_filename, margin_cm=None):
 
     if text_line_found:
         text_str, remainder = text_line_found
-        is_huge = re.search(r"\\+Huge\b", text_str, re.IGNORECASE) is not None
     else:
-        text_str = r'"\\Huge\\bfseries Title"'
+        text_str = r'"\\fontsize{50pt}{60pt}\\selectfont Orion"'
         remainder = " color 0 0 0 ;"
-        is_huge = True
 
-    # Use a larger inset for Huge labels; pass a margin to override it.
+    # If no margin was supplied, choose one based on the label's font.
     if margin_cm is None:
-        margin_cm = 1.3 if is_huge else 0.8
+        fontsize_match = re.search(
+            r"\\+fontsize\s*\{\s*([\d.]+)\s*pt\s*\}\s*"
+            r"\{\s*([\d.]+)\s*pt\s*\}\s*\\+selectfont",
+            text_str,
+            re.IGNORECASE,
+        )
+
+        if fontsize_match:
+            leading_pt = float(fontsize_match.group(2))
+            margin_cm = leading_pt * 2.54 / 72.0
+        elif re.search(r"\\+Huge\b", text_str, re.IGNORECASE):
+            margin_cm = 1.3
+        else:
+            margin_cm = 0.8
 
     half_height_deg = (box_height / 2.0 - margin_cm) * grad_per_cm
     half_width_deg = (box_width / 2.0 - margin_cm) * grad_per_cm
@@ -89,11 +100,12 @@ def calculate_top_left_coords(pp3_filename, margin_cm=None):
         raise ValueError("Cannot calculate the RA offset near a celestial pole.")
 
     ra_left = (
-        ra_center
-        + half_width_deg / (15.0 * cos_dec)
+        ra_center + half_width_deg / (15.0 * cos_dec)
     ) % 24.0
 
-    updated_line = f"text {text_str} at {ra_left:.4f} {dec_top:.4f}{remainder}"
+    updated_line = (
+        f"text {text_str} at {ra_left:.4f} {dec_top:.4f}{remainder}"
+    )
 
     print(f"\nMargin used: {margin_cm:.2f} cm")
     print(f"Top-left target RA : {ra_left:.4f} hours")

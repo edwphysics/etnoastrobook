@@ -44,4 +44,4 @@ switch milky_way off
 #set faintest_star_with_label_magnitude 0.0
 
 objects_and_labels
-text "\\Huge\\bfseries Tuipē" at 5.7570 0.1000 color 0 0 0 ;
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Tuipē" at 5.7503 0.0000 color 0 0 0 ;
