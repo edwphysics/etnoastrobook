@@ -1,0 +1,47 @@
+filename output tuipe.tex
+switch pdf_output on
+
+set center_rectascension 5.55
+set center_declination -3
+set box_width 15
+set box_height 15
+
+# Scale in degrees per cm; 2.0 gives a wider field than 1.33
+set grad_per_cm 0.5
+
+set faintest_star_magnitude 10.0
+
+# Increase Stars Size
+set star_scaling 3.0
+set minimal_star_radius 0.08
+
+# White background and black stars
+color background 1 1 1
+switch colored_stars off
+color stars 0 0 0
+color text_labels 0 0 0
+
+# Constellation lines and boundaries
+filename constellation_lines lines.dat
+switch constellation_lines on
+color constellation_lines 0 0 0
+switch boundaries off
+color boundaries 0 0 0
+color highlighted_boundaries 0 0 0
+color milky_way 0 0 0
+color labels 0 0 0
+color nebulae 0 0 0
+line_width constellation_lines 0.08
+
+# Hide automatic labels, coordinate grid, ecliptic, and nebulae
+switch labels on
+switch grid off
+switch ecliptic off
+switch nebulae off
+switch milky_way off
+
+# Suppress automatic star names while retaining the manual Taurus label
+#set faintest_star_with_label_magnitude 0.0
+
+objects_and_labels
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Tuip\\~{e}" at 5.7503 0.0000 color 0 0 0 ;

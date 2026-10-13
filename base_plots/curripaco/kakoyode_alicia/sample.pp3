@@ -1,0 +1,59 @@
+# Scorpio
+
+filename output sample.tex
+
+switch pdf_output on 					# tex -> ps -> pdf
+switch milky_way off					# prints milky way
+switch colored_stars off				# stars color from temperature to RGB
+#switch labels off						# deletes all the labels
+
+set center_rectascension 16.8 			# frame center rectascension
+set center_declination -30				# frame center declination
+set constellation SCO   				# constellation highlighted
+#set faintest_star_with_label_magnitude 5.0 			
+# labels present for stars with <5m magnitude
+
+set box_width 10 						# frame width in cm
+set box_height 12						# frame height in cm
+#set grad_per_cm 5						# frame scale in grads per cm
+
+color nebulae 0 0 0 					# nebulae colors
+color background 1 1 1 					# background color
+color grid 0.5 0.5 0.5 					# grid color
+color ecliptic 0.3 0.3 0.3 				# ecliptic color
+color constellation_lines 0.7 0.7 0.7 	# constellation lines color
+color labels 0 0 0 						# labels color
+color boundaries 0.8 0.8 0.8 			# constellation boundary color
+color highlighted_boundaries 0 0 0 		# highlighted constellation boundary color
+color milky_way 0.5 0.5 0.5 			# milky way color
+color stars 0 0 0 						# stars color; requires switch colored_stars off
+
+objects_and_labels						# parameters -> commands separation
+
+set_label_text HD 148703 "\\footnotesize N Sco"			# works if the label is present
+set_label_text HD 149447 "\\footnotesize H Sco"			# works if the label is present
+#set_label_text NGC 6231 "Nebula Name"  # change label text; use "\\" as LaTeX syntax
+
+add_labels HD 148703 HD 149447;			# adds a set of labels; these stars have not a default label
+delete_labels NGC 6231 M 19 M 62 ;		# delete a particular set of labels
+
+reposition HD 148703 E_ ;				# puts (and forces) the label under the object
+reposition HD 149447 S ;				# options: N NE NW E_ W_ E W SE SW S
+
+text "Scorpio Constellation" at 17.5 -29.5 color 0.0 0.0 0.9333 towards N ; 
+# include any text at desired position 
+# color of the text; respect to the coordinate position
+
+text "\\bfseries Scorpio Constellation" at 16.2 -10.5 along declination color 0 0 0 towards S ; 
+# sets the text as a flex
+
+text "$#3$" at 0 -30 along declination tics rectascension 1 towards N ; # create tics along declination -30
+text "$#5$" at 16 0 along declination tics declination 10 towards N ; 	# create tics along rectascension 16
+# unknown at this point the "$#3$" or the number before towards
+
+delete M 8 M 9 M 20 M 21 M 23 M 6 M 7 M 107 ; # delete objetcs, nebulae or stars
+add HD 144844 ; # add a star with 9m
+
+set_label_text HD 144844 "\\bfseries 9m star" # added a faint star, added this label for recognition
+reposition HD 144844 S ;
+
