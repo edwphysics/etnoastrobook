@@ -44,4 +44,4 @@ text "$#3{\\rm h}#4{\\rm m}$" at 4.5000 15.7000 along declination
 text "$#5^\\circ$" at 4.7319 27.8000 along declination
     tics declination 5 towards W ;
 
-text "\\LARGE\\bfseries Pleiades" at 4.7319 39.9000 color 0 0 0 ;
+text "\\LARGE\\bfseries Pleiades" at 4.7319 39.9 color 0 0 0 ;

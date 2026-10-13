@@ -1,0 +1,47 @@
+filename output cassiopea.tex
+switch pdf_output on
+
+set center_rectascension 0.23
+set center_declination 62.2
+set box_width 15
+set box_height 15
+
+# Scale in degrees per cm; 2.0 gives a wider field than 1.33
+set grad_per_cm 1.8
+
+set faintest_star_magnitude 10.0
+
+# White background and black stars
+color background 1 1 1
+switch colored_stars off
+color stars 0 0 0
+color text_labels 0 0 0
+
+# Constellation lines and boundaries
+#filename constellation_lines lines.dat
+switch constellation_lines on
+color constellation_lines 0 0 0
+switch boundaries off
+color boundaries 0 0 0
+color highlighted_boundaries 0 0 0
+color grid 0.8 0.8 0.8
+color labels 0 0 0
+
+# Hide automatic labels, coordinate grid, ecliptic, and nebulae
+switch labels on
+switch grid on
+switch ecliptic off
+switch nebulae off
+
+# Suppress automatic star names while retaining the manual Taurus label
+#set faintest_star_with_label_magnitude -10.0
+
+objects_and_labels
+
+text "$#3{\\rm h}#4{\\rm m}$" at 2.0000 48.4500 along declination
+    tics rectascension 0.5 towards S ;
+
+text "$#5^\\circ$" at 2.1955 62.2000 along declination
+    tics declination 5 towards W ;
+
+text "\\LARGE\\bfseries Cassiopea" at 2.1955 75.9500 color 0 0 0 ;
