@@ -1,0 +1,54 @@
+filename output aridalian.tex
+switch pdf_output on
+
+set center_rectascension 1.0
+set center_declination 0.0
+set box_width 15
+set box_height 15
+
+# Scale in degrees per cm; 2.0 gives a wider field than 1.33
+set grad_per_cm 5.5
+
+set faintest_star_magnitude 10.0
+
+# Increase Stars Size
+#set star_scaling 1.0
+#set minimal_star_radius 0.01
+
+# White background and black stars
+color background 1 1 1
+switch colored_stars off
+color stars 0 0 0
+color text_labels 0 0 0
+
+# Constellation lines and boundaries
+#filename constellation_lines lines.dat
+switch constellation_lines on
+color constellation_lines 0 0 0
+switch boundaries off
+color boundaries 0 0 0
+color highlighted_boundaries 0 0 0
+color milky_way 0 0 0
+color labels 0 0 0
+color nebulae 0 0 0
+line_width constellation_lines 0.08
+
+# Hide automatic labels, coordinate grid, ecliptic, and nebulae
+switch labels off
+switch grid on
+switch ecliptic off
+switch nebulae off
+switch milky_way off
+
+# Suppress automatic star names while retaining the manual Taurus label
+#set faintest_star_with_label_magnitude 0.0
+
+objects_and_labels
+
+text "$#3{\\rm h}#4{\\rm m}$" at 3.0000 -36.8500 along declination
+    tics rectascension 1 towards S ;
+
+text "$#5^\\circ$" at 3.4567 0.0000 along declination
+    tics declination 10 towards W ;
+
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Aridalian" at 3.4567 36.8500 color 0 0 0 ;

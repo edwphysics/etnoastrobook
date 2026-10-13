@@ -1,19 +1,19 @@
-filename output tuipe.tex
+filename output kakoyode.tex
 switch pdf_output on
 
-set center_rectascension 5.55
-set center_declination -3
+set center_rectascension 5.58
+set center_declination -4.78
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 0.5
+set grad_per_cm 0.85
 
 set faintest_star_magnitude 10.0
 
 # Increase Stars Size
-set star_scaling 3.0
-set minimal_star_radius 0.08
+set star_scaling 1.5
+set minimal_star_radius 0.04
 
 # White background and black stars
 color background 1 1 1
@@ -44,4 +44,4 @@ switch milky_way off
 #set faintest_star_with_label_magnitude 0.0
 
 objects_and_labels
-text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Tuip\\~{e}" at 5.7503 0.0000 color 0 0 0 ;
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Cacuyúde" at 5.95 0.2456 color 0 0 0 ;
