@@ -1,13 +1,13 @@
 filename output escorpio.tex
 switch pdf_output on
 
-set center_rectascension 16.52
-set center_declination -31
+set center_rectascension 16.77
+set center_declination -32.18
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 2.7
+set grad_per_cm 2.0
 
 set faintest_star_magnitude 10.0
 
@@ -38,10 +38,10 @@ switch nebulae off
 
 objects_and_labels
 
-text "$#3{\\rm h}#4{\\rm m}$" at 17.5000 -45.8500 along declination
+text "$#3{\\rm h}#4{\\rm m}$" at 17.5000 -43.1800 along declination
     tics rectascension 0.5 towards S ;
 
-text "$#5^\\circ$" at 17.6750 -31.0000 along declination
+text "$#5^\\circ$" at 17.6364 -32.1800 along declination
     tics declination 5 towards W ;
 
-text "\\LARGE\\bfseries Escorpio" at 17.6750 -16.1500 color 0 0 0 ;
+text "\\LARGE\\bfseries Escorpio" at 17.6364 -21.1800 color 0 0 0 ;
