@@ -1,13 +1,13 @@
 filename output perseo.tex
 switch pdf_output on
 
-set center_rectascension 3.5
-set center_declination 43.0
+set center_rectascension 3.0
+set center_declination 50.0
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 2.0
+set grad_per_cm 2.5
 
 set faintest_star_magnitude 10.0
 
@@ -41,10 +41,10 @@ switch milky_way on
 
 objects_and_labels
 
-text "$#3{\\rm h}#4{\\rm m}$" at 4.5000 31.0000 along declination
+text "$#3{\\rm h}#4{\\rm m}$" at 4.5000 35.0000 along declination
     tics rectascension 0.5 towards S ;
 
-text "$#5^\\circ$" at 4.5939 43.0000 along declination
+text "$#5^\\circ$" at 4.5557 50.0000 along declination
     tics declination 5 towards W ;
 
-text "\\LARGE\\bfseries Perseo" at 4.5939 55.0000 color 0 0 0 ;
+text "\\LARGE\\bfseries Perseo" at 4.5557 65.0000 color 0 0 0 ;
