@@ -1,0 +1,1617 @@
+Notebook[{Cell[
+BoxData[RowBox[{RowBox[{"(*"," ",RowBox[{"===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","==="}]," ","*)"}],"\n",RowBox[
+{"(*"," ",RowBox[{"GENERAR"," ","PLOTS"," ","PARA"," ","TODAS"," ","LAS"," ","ESTRELLAS"}],"                       ","*)"}],"\n",RowBox[
+{"(*"," ",RowBox[{"Conserva"," ","el"," ","dise\[NTilde]o"," ","profesional"," ","previamente"," ","definido"}],"          ","*)"}],"\n",RowBox[
+{"(*"," ",RowBox[{"===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","===","==="}]," ","*)"}]}]],
+"Input",CellLabel -> "In[162]:= ",ExpressionUUID -> "a6fd9867-b953-43da-a952-a01dd656636f"],Cell[
+BoxData[
+RowBox[{RowBox[{"ClearAll","[","\"Global`*\"","]"}],";"}]],"Input",CellLabel -> "In[163]:= ",
+ExpressionUUID -> "8c5f9760-83eb-4717-8db3-440a92886b2e"],Cell[
+CellGroupData[{Cell[
+BoxData[
+{RowBox[{RowBox[{"SetCloudDirectory","[","\"https://www.wolframcloud.com/obj/edwinperez/plots\"","]"}],";"}],"\n",RowBox[
+{"CloudDirectory","[","]"}]}],"Input",CellLabel -> "In[164]:= ",ExpressionUUID -> "c0ed8351-f09a-4b39-9dc3-61de553f45d2"],Cell[
+BoxData[
+InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[{"\"https://www.wolframcloud.com/obj/edwinperez/plots\"","https://www.wolframcloud.com/obj/edwinperez/plots"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots"],
+SelectWithContents -> True],StandardForm],"Output",CellLabel -> "Out[165]= ",ExpressionUUID -> "5a1e55ee-7de1-4125-a7a5-7c3fc65329e5"]},
+Open],ExpressionUUID -> "f5cc9eb1-1cb7-477d-bb14-c06a1c594ea1"],Cell[
+BoxData[RowBox[
+{"(*"," ",RowBox[{"1."," ","Par\[AAcute]metros"," ","de"," ","observaci\[OAcute]n"}]," ","*)"}]],
+"Input",CellLabel -> "In[166]:= ",ExpressionUUID -> "39a1df08-3fef-4625-97d4-6c0ad63e03aa"],Cell[
+BoxData[
+{RowBox[{RowBox[{"latitud"," ","="," ",RowBox[{"3"," ","+"," ",RowBox[{"51","/","60"}]," ","+"," ",RowBox[
+{"43.5","/","3600"}]}]}],";"}],"\n",RowBox[{RowBox[{"longitud"," ","="," ",RowBox[
+{"-",RowBox[{"(",RowBox[{"67"," ","+"," ",RowBox[{"55","/","60"}]," ","+"," ",RowBox[
+{"42.4","/","3600"}]}],")"}]}]}],";"}]}],"Input",CellLabel -> "In[167]:= ",ExpressionUUID -> "3fd4aa35-f3b7-4881-a5e6-d405659b5196"],Cell[
+BoxData[
+{RowBox[{RowBox[{"horaLocal"," ","="," ","18.5"}],";"}],"\n",RowBox[{RowBox[{"horaUTC"," ","="," ",RowBox[
+{"horaLocal"," ","+"," ","5"}]}],";"}]}],"Input",CellLabel -> "In[169]:= ",ExpressionUUID -> "c1012f97-22d5-4622-81d5-7cd5ab750ee8"],Cell[
+BoxData[
+RowBox[{"(*"," ",RowBox[{"Coordenadas"," ","ecuatoriales"," ","J2000"," ","de"," ","Betelgeuse"}]," ","*)"}]],
+"Input",CellLabel -> "In[171]:= ",ExpressionUUID -> "74541962-5b6b-4b98-af15-ac36c969d4df"],Cell[
+BoxData[
+{RowBox[{RowBox[{RowBox[{"RA"," ","="," ","5.919529"}],";"}],"       ",RowBox[{"(*"," ",RowBox[
+{RowBox[{"Ascensi\[OAcute]n"," ","recta"}],","," ","horas"}]," ","*)"}]}],"\n",RowBox[
+{RowBox[{RowBox[{"Dec"," ","="," ","7.407064"}],";"}],"      ",RowBox[{"(*"," ",RowBox[
+{"Declinaci\[OAcute]n",","," ","grados"}]," ","*)"}]}]}],"Input",CellLabel -> "In[172]:= ",
+ExpressionUUID -> "e20205f0-caa1-434b-8518-862ea491e20d"],Cell[
+BoxData[{RowBox[{RowBox[
+{"phi"," ","="," ",RowBox[{"latitud"," ","Degree"}]}],";"}],"\n",RowBox[{RowBox[{"delta"," ","="," ",RowBox[
+{"Dec"," ","Degree"}]}],";"}]}],"Input",CellLabel -> "In[174]:= ",ExpressionUUID -> "b9357e01-d9c6-48cd-bf82-63121edb4ccb"],Cell[
+BoxData[
+RowBox[{"(*"," ",RowBox[{"2."," ","C\[AAcute]lculo"," ","de"," ","la"," ","fecha"," ","juliana"}]," ","*)"}]],
+"Input",CellLabel -> "In[176]:= ",ExpressionUUID -> "743e4703-ad4f-48c1-ad77-9f57552399f0"],Cell[
+BoxData[
+RowBox[{RowBox[{RowBox[{"fechaJuliana","[",RowBox[{"fecha_",","," ","hora_"}],"]"}]," ",":="," ",RowBox[
+{"Module","[","\n","  ",RowBox[{RowBox[{"{",RowBox[{"yy",","," ","mm",","," ","dd",","," ","a",","," ","b"}],"}"}],",","\n","  ",RowBox[
+{RowBox[{RowBox[{"{",RowBox[{"yy",","," ","mm",","," ","dd"}],"}"}]," ","="," ",RowBox[
+{"DateValue","[",RowBox[{"fecha",","," ",RowBox[{"{",RowBox[{"\"Year\"",","," ","\"Month\"",","," ","\"Day\""}],"}"}]}],"]"}]}],";","\n","  ",RowBox[
+{"If","[",RowBox[{RowBox[{"mm"," ","\[LessEqual]"," ","2"}],",","\n","    ",RowBox[
+{RowBox[{"yy","--"}],";","\n","    ",RowBox[{"mm"," ","+="," ","12"}],";"}]}],"\n","  ","]"}],";","\n","  ",RowBox[
+{"a"," ","="," ",RowBox[{"Floor","[",RowBox[{"yy","/","100"}],"]"}]}],";","\n","  ",RowBox[
+{"b"," ","="," ",RowBox[{"2"," ","-"," ","a"," ","+"," ",RowBox[{"Floor","[",RowBox[
+{"a","/","4"}],"]"}]}]}],";","\n","  ",RowBox[{RowBox[{"Floor","[",RowBox[{"365.25"," ",RowBox[
+{"(",RowBox[{"yy"," ","+"," ","4716"}],")"}]}],"]"}]," ","+","\n","    ",RowBox[{"Floor","[",RowBox[
+{"30.6001"," ",RowBox[{"(",RowBox[{"mm"," ","+"," ","1"}],")"}]}],"]"}]," ","+","\n","    ","dd"," ","+"," ","b"," ","-"," ","1524.5"," ","+"," ",RowBox[
+{"hora","/","24"}]}]}]}],"]"}]}],";"}]],"Input",CellLabel -> "In[177]:= ",ExpressionUUID -> "267aadb3-71ea-4df9-841f-a4d76bcaf1a7"],Cell[
+BoxData[
+RowBox[{RowBox[{"(*"," ",RowBox[{"3."," ","Tiempo"," ","sid\[EAcute]reo"," ","y"," ","altitud"}]," ","*)"}],"\n",RowBox[
+{RowBox[{RowBox[{"altitudEstrella","[","fecha_","]"}]," ",":="," ",RowBox[{"Module","[","\n","  ",RowBox[
+{RowBox[{"{",RowBox[{"jd",","," ","t",","," ","gmst",","," ","lst",","," ","anguloHorario",","," ","senoAltitud"}],"}"}],",","\n","  ",RowBox[
+{RowBox[{"jd"," ","="," ",RowBox[{"fechaJuliana","[",RowBox[{"fecha",","," ","horaUTC"}],"]"}]}],";","\n","  ",RowBox[
+{"t"," ","="," ",RowBox[{RowBox[{"(",RowBox[{"jd"," ","-"," ","2451545.0"}],")"}],"/","36525"}]}],";","\n","  ",RowBox[
+{"gmst"," ","="," ",RowBox[{"Mod","[","\n","    ",RowBox[{RowBox[{"280.46061837"," ","+","\n","      ",RowBox[
+{"360.98564736629"," ",RowBox[{"(",RowBox[{"jd"," ","-"," ","2451545.0"}],")"}]}]," ","+","\n","      ",RowBox[
+{"0.000387933"," ",RowBox[{"t","^","2"}]}]," ","-","\n","      ",RowBox[{RowBox[{"t","^","3"}],"/","38710000"}]}],",","\n","    ","360"}]," ","]"}]}],";","\n","  ",RowBox[
+{"lst"," ","="," ",RowBox[{"Mod","[",RowBox[{RowBox[{"gmst"," ","+"," ","longitud"}],","," ","360"}],"]"}]}],";","\n","  ",RowBox[
+{"anguloHorario"," ","="," ",RowBox[{RowBox[{"(",RowBox[{"lst"," ","-"," ",RowBox[
+{"15"," ","RA"}]}],")"}]," ","Degree"}]}],";","\n","  ",RowBox[{"senoAltitud"," ","=","\n","    ",RowBox[
+{RowBox[{RowBox[{"Sin","[","phi","]"}]," ",RowBox[{"Sin","[","delta","]"}]}]," ","+","\n","    ",RowBox[
+{RowBox[{"Cos","[","phi","]"}]," ",RowBox[{"Cos","[","delta","]"}]," ",RowBox[{"Cos","[","anguloHorario","]"}]}]}]}],";","\n","  ",RowBox[
+{RowBox[{"ArcSin","[",RowBox[{"Clip","[",RowBox[{"senoAltitud",","," ",RowBox[{"{",RowBox[
+{RowBox[{"-","1"}],","," ","1"}],"}"}]}],"]"}],"]"}],"/","Degree"}]}]}],"]"}]}],";"}]}]],
+"Input",CellLabel -> "In[178]:= ",ExpressionUUID -> "4e2acb20-cfa7-472b-b3d1-806d2b41cda3"],Cell[
+BoxData[
+RowBox[{"(*"," ",RowBox[{"4."," ","Generaci\[OAcute]n"," ","de"," ","datos"," ","diarios"," ","para"," ","2026"}]," ","*)"}]],
+"Input",CellLabel -> "In[179]:= ",ExpressionUUID -> "32051c55-c3de-4c37-b0dd-94700ab6a2f9"],Cell[
+BoxData[
+RowBox[{RowBox[{"fechas"," ","="," ",RowBox[{"DateRange","[","\n","  ",RowBox[{RowBox[
+{"DateObject","[",RowBox[{"{",RowBox[{"2026",","," ","1",","," ","1"}],"}"}],"]"}],",","\n","  ",RowBox[
+{"DateObject","[",RowBox[{"{",RowBox[{"2026",","," ","12",","," ","31"}],"}"}],"]"}],",","\n","  ","\"Day\""}],"\n","]"}]}],";"}]],
+"Input",CellLabel -> "In[180]:= ",ExpressionUUID -> "61adeac8-03d1-4035-941e-acd8f70e078e"],Cell[
+BoxData[
+RowBox[{RowBox[{"altitudes"," ","="," ",RowBox[{"altitudEstrella"," ","/@"," ","fechas"}]}],";"}]],
+"Input",CellLabel -> "In[181]:= ",ExpressionUUID -> "5350e4ec-356f-4930-922f-eb0a780eb5d0"],Cell[
+BoxData[
+RowBox[{RowBox[{"n"," ","="," ",RowBox[{"Length","[","altitudes","]"}]}],";"}]],"Input",
+CellLabel -> "In[182]:= ",ExpressionUUID -> "9a1b8e14-8ed8-4803-bb97-c51e26f22302"],Cell[
+BoxData[
+RowBox[{RowBox[{"datos"," ","="," ",RowBox[{"Table","[","\n","  ",RowBox[{RowBox[
+{"{","\n","    ",RowBox[{RowBox[{"DateString","[",RowBox[{RowBox[{"fechas","[",RowBox[
+{"[","i","]"}],"]"}],","," ",RowBox[{"{",RowBox[{"\"Day\"",","," ","\"/\"",","," ","\"Month\"",","," ","\"/\"",","," ","\"Year\""}],"}"}]}],"]"}],",","\n","    ","\"18:30\"",",","\n","    ",RowBox[
+{"altitudes","[",RowBox[{"[","i","]"}],"]"}]}],"\n","  ","}"}],",","\n","  ",RowBox[
+{"{",RowBox[{"i",","," ","n"}],"}"}]}],"\n","]"}]}],";"}]],"Input",CellLabel -> "In[183]:= ",
+ExpressionUUID -> "ca313fdd-f042-4a8f-90b6-cb6d1338b7ee"],Cell[
+BoxData[RowBox[{"(*"," ",RowBox[
+{"Tabla"," ","de"," ","resultados"}]," ","*)"}]],"Input",CellLabel -> "In[184]:= ",
+ExpressionUUID -> "ec7c49e3-08f1-4934-907d-41add6874442"],Cell[
+BoxData[RowBox[{RowBox[
+{"tabla"," ","="," ",RowBox[{"Prepend","[","\n","  ",RowBox[{"datos",",","\n","  ",RowBox[
+{"{",RowBox[{"\"Fecha\"",","," ","\"Hora local\"",","," ","\"Altitud (grados)\""}],"}"}]}],"\n","]"}]}],";"}]],
+"Input",CellLabel -> "In[185]:= ",ExpressionUUID -> "1a014dc3-5adf-4246-a565-c6872f7b3f72"],Cell[
+BoxData[
+RowBox[{RowBox[{"Grid","[","\n","  ",RowBox[{"tabla",",","\n","  ",RowBox[{"Frame"," ","\[Rule]"," ","All"}],",","\n","  ",RowBox[
+{"Alignment"," ","\[Rule]"," ","Center"}],",","\n","  ",RowBox[{"Background"," ","\[Rule]"," ",RowBox[
+{"{",RowBox[{"None",","," ",RowBox[{"{",RowBox[{"LightGray",","," ",RowBox[{"{","White","}"}]}],"}"}]}],"}"}]}],",","\n","  ",RowBox[
+{"ItemStyle"," ","\[Rule]"," ",RowBox[{"Directive","[",RowBox[{"Black",","," ","12"}],"]"}]}]}],"\n","]"}],";"}]],
+"Input",CellLabel -> "In[186]:= ",ExpressionUUID -> "ce631644-ca34-47d2-a9bf-3f98e13d539e"],Cell[
+BoxData[
+RowBox[{RowBox[{"(*",RowBox[{"Cat\[AAcute]logo"," ","de"," ","Estrellas"," ","Utilizadas"}],"*)"}],"\n",RowBox[
+{RowBox[{"stars"," ","="," ",RowBox[{"{","\n","  ",RowBox[{RowBox[{"<|",RowBox[{RowBox[
+{"\"Entrada\""," ","\[Rule]"," ","\"11 Cas\""}],","," ",RowBox[{"\"ID\""," ","\[Rule]"," ","\"beta Cas (Caph)\""}],",","\n","    ",RowBox[
+{"\"RAdeg\""," ","\[Rule]"," ","2.294521583333"}],","," ",RowBox[{"\"Decdeg\""," ","\[Rule]"," ","59.149781111111"}],",","\n","    ",RowBox[
+{"\"RAhms\""," ","\[Rule]"," ","\"00:09:10.68518\""}],","," ",RowBox[{"\"DecDMS\""," ","\[Rule]"," ","\"+59:08:59.2120\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Estrella\""}]}],"|>"}],",","\n","  ",RowBox[{"<|",RowBox[
+{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"54 Tau\""}],","," ",RowBox[{"\"ID\""," ","\[Rule]"," ","\"gamma Tau (Prima Hyadum)\""}],",","\n","    ",RowBox[
+{"\"RAdeg\""," ","\[Rule]"," ","64.948349682919"}],","," ",RowBox[{"\"Decdeg\""," ","\[Rule]"," ","15.627642051425"}],",","\n","    ",RowBox[
+{"\"RAhms\""," ","\[Rule]"," ","\"04:19:47.6039239005\""}],","," ",RowBox[{"\"DecDMS\""," ","\[Rule]"," ","\"+15:37:39.511385129\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Estrella\""}]}],"|>"}],",","\n","  ",RowBox[{"<|",RowBox[
+{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"Pleiades\""}],","," ",RowBox[{"\"ID\""," ","\[Rule]"," ","\"M45 / Melotte 22\""}],",","\n","    ",RowBox[
+{"\"RAdeg\""," ","\[Rule]"," ","56.600833333333"}],","," ",RowBox[{"\"Decdeg\""," ","\[Rule]"," ","24.113888888889"}],",","\n","    ",RowBox[
+{"\"RAhms\""," ","\[Rule]"," ","\"03:46:24.2\""}],","," ",RowBox[{"\"DecDMS\""," ","\[Rule]"," ","\"+24:06:50\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Centro de c\[UAcute]mulo\""}]}],"|>"}],",","\n","  ",RowBox[
+{"<|",RowBox[{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"Acrux\""}],","," ",RowBox[
+{"\"ID\""," ","\[Rule]"," ","\"alpha Cru AB\""}],",","\n","    ",RowBox[{"\"RAdeg\""," ","\[Rule]"," ","186.649563416667"}],","," ",RowBox[
+{"\"Decdeg\""," ","\[Rule]"," ",RowBox[{"-","63.099092861111"}]}],",","\n","    ",RowBox[
+{"\"RAhms\""," ","\[Rule]"," ","\"12:26:35.89522\""}],","," ",RowBox[{"\"DecDMS\""," ","\[Rule]"," ","\"-63:05:56.7343\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Estrella m\[UAcute]ltiple\""}]}],"|>"}],",","\n","  ",RowBox[
+{"<|",RowBox[{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"Rigel\""}],","," ",RowBox[
+{"\"ID\""," ","\[Rule]"," ","\"beta Ori\""}],",","\n","    ",RowBox[{"\"RAdeg\""," ","\[Rule]"," ","78.634467083333"}],","," ",RowBox[
+{"\"Decdeg\""," ","\[Rule]"," ",RowBox[{"-","8.201638361111"}]}],",","\n","    ",RowBox[
+{"\"RAhms\""," ","\[Rule]"," ","\"05:14:32.27210\""}],","," ",RowBox[{"\"DecDMS\""," ","\[Rule]"," ","\"-08:12:05.8981\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Estrella\""}]}],"|>"}],",","\n","  ",RowBox[{"<|",RowBox[
+{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"2 CMa\""}],","," ",RowBox[{"\"ID\""," ","\[Rule]"," ","\"beta CMa (Mirzam)\""}],",","\n","    ",RowBox[
+{"\"RAdeg\""," ","\[Rule]"," ","95.674938969583"}],","," ",RowBox[{"\"Decdeg\""," ","\[Rule]"," ",RowBox[
+{"-","17.955918708889"}]}],",","\n","    ",RowBox[{"\"RAhms\""," ","\[Rule]"," ","\"06:22:41.9853527\""}],","," ",RowBox[
+{"\"DecDMS\""," ","\[Rule]"," ","\"-17:57:21.307352\""}],",","\n","    ",RowBox[{"\"Clase\""," ","\[Rule]"," ","\"Estrella\""}]}],"|>"}],",","\n","  ",RowBox[
+{"<|",RowBox[{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"6 Sco\""}],","," ",RowBox[
+{"\"ID\""," ","\[Rule]"," ","\"pi Sco (Fang)\""}],",","\n","    ",RowBox[{"\"RAdeg\""," ","\[Rule]"," ","239.712971824167"}],","," ",RowBox[
+{"\"Decdeg\""," ","\[Rule]"," ",RowBox[{"-","26.114107945000"}]}],",","\n","    ",RowBox[
+{"\"RAhms\""," ","\[Rule]"," ","\"15:58:51.1132378\""}],","," ",RowBox[{"\"DecDMS\""," ","\[Rule]"," ","\"-26:06:50.788602\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Sistema estelar\""}]}],"|>"}],",","\n","  ",RowBox[
+{"<|",RowBox[{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"18 Psc\""}],","," ",RowBox[
+{"\"ID\""," ","\[Rule]"," ","\"lambda Psc\""}],",","\n","    ",RowBox[{"\"RAdeg\""," ","\[Rule]"," ","355.511688997493"}],","," ",RowBox[
+{"\"Decdeg\""," ","\[Rule]"," ","1.780042138070"}],",","\n","    ",RowBox[{"\"RAhms\""," ","\[Rule]"," ","\"23:42:02.8053593984\""}],","," ",RowBox[
+{"\"DecDMS\""," ","\[Rule]"," ","\"+01:46:48.151697051\""}],",","\n","    ",RowBox[
+{"\"Clase\""," ","\[Rule]"," ","\"Estrella\""}]}],"|>"}],",","\n","\[NonBreakingSpace]\[NonBreakingSpace]\[NonBreakingSpace]\[NonBreakingSpace]",RowBox[
+{"<|",RowBox[{RowBox[{"\"Entrada\""," ","\[Rule]"," ","\"Mirfak\""}],","," ",RowBox[
+{"\"ID\""," ","\[Rule]"," ","\"alpha Per (33 Per)\""}],",","\n","    ",RowBox[{"\"RAdeg\""," ","\[Rule]"," ","51.080708718333"}],","," ",RowBox[
+{"\"Decdeg\""," ","\[Rule]"," ","49.861179293056"}],",","\n","    ",RowBox[{"\"RAhms\""," ","\[Rule]"," ","\"03:24:19.3700924\""}],","," ",RowBox[
+{"\"DecDMS\""," ","\[Rule]"," ","\"+49:51:40.245455\""}],",","\n","    ",RowBox[{"\"Clase\""," ","\[Rule]"," ","\"Estrella\""}]}],"|>"}]}],"}"}]}],";"}]}]],
+"Input",CellLabel -> "In[187]:= ",ExpressionUUID -> "dec68c43-8730-4e5f-875d-1b820b62e019"],Cell[
+CellGroupData[
+{Cell[
+BoxData[RowBox[{"Dataset","[","stars","]"}]],"Input",CellLabel -> "In[188]:= ",
+ExpressionUUID -> "bd939866-63cf-4fe7-80d3-d56ca3f4aa46"],Cell[
+BoxData[TagBox[TagBox[
+DynamicModuleBox[{Set[TypeSystem`NestedGrid`PackagePrivate`$state$$,Association["InitialData" -> {Association[
+"Entrada" -> "11 Cas","ID" -> "beta Cas (Caph)","RAdeg" -> 2.294521583333`,"Decdeg" -> 59.149781111111`,
+"RAhms" -> "00:09:10.68518","DecDMS" -> "+59:08:59.2120","Clase" -> "Estrella"],Association[
+"Entrada" -> "54 Tau","ID" -> "gamma Tau (Prima Hyadum)","RAdeg" -> 64.948349682919`,
+"Decdeg" -> 15.627642051425`,"RAhms" -> "04:19:47.6039239005","DecDMS" -> "+15:37:39.511385129",
+"Clase" -> "Estrella"],Association["Entrada" -> "Pleiades","ID" -> "M45 / Melotte 22",
+"RAdeg" -> 56.600833333333`,"Decdeg" -> 24.113888888889`,"RAhms" -> "03:46:24.2",
+"DecDMS" -> "+24:06:50","Clase" -> "Centro de c\[UAcute]mulo"],Association["Entrada" -> "Acrux",
+"ID" -> "alpha Cru AB","RAdeg" -> 186.649563416667`,"Decdeg" -> -63.099092861111`,
+"RAhms" -> "12:26:35.89522","DecDMS" -> "-63:05:56.7343","Clase" -> "Estrella m\[UAcute]ltiple"],Association[
+"Entrada" -> "Rigel","ID" -> "beta Ori","RAdeg" -> 78.634467083333`,"Decdeg" -> -8.201638361111`,
+"RAhms" -> "05:14:32.27210","DecDMS" -> "-08:12:05.8981","Clase" -> "Estrella"],Association[
+"Entrada" -> "2 CMa","ID" -> "beta CMa (Mirzam)","RAdeg" -> 95.674938969583`,"Decdeg" -> -17.955918708889`,
+"RAhms" -> "06:22:41.9853527","DecDMS" -> "-17:57:21.307352","Clase" -> "Estrella"],Association[
+"Entrada" -> "6 Sco","ID" -> "pi Sco (Fang)","RAdeg" -> 239.712971824167`,"Decdeg" -> -26.114107945`,
+"RAhms" -> "15:58:51.1132378","DecDMS" -> "-26:06:50.788602","Clase" -> "Sistema estelar"],Association[
+"Entrada" -> "18 Psc","ID" -> "lambda Psc","RAdeg" -> 355.511688997493`,"Decdeg" -> 1.78004213807`,
+"RAhms" -> "23:42:02.8053593984","DecDMS" -> "+01:46:48.151697051","Clase" -> "Estrella"],Association[
+"Entrada" -> "Mirfak","ID" -> "alpha Per (33 Per)","RAdeg" -> 51.080708718333`,"Decdeg" -> 49.861179293056`,
+"RAhms" -> "03:24:19.3700924","DecDMS" -> "+49:51:40.245455","Clase" -> "Estrella"]},
+"AllowEmbedding" -> True,"InitialShape" -> TypeSystem`PackageScope`HeaderShape[Association[
+{All,"Entrada"} -> 1,{All,"ID"} -> 1,{All,"RAdeg"} -> 1,{All,"Decdeg"} -> 1,{All,"RAhms"} -> 1,
+{All,"DecDMS"} -> 1,{All,"Clase"} -> 1],TypeSystem`PackageScope`Limited[TypeSystem`PackageScope`ColumnShape[
+TypeSystem`PackageScope`Limited[TypeSystem`PackageScope`RowShape[Association["Entrada" -> TypeSystem`PackageScope`AtomShape[
+67.2`],"ID" -> TypeSystem`PackageScope`AtomShape[268.8`],"RAdeg" -> TypeSystem`PackageScope`AtomShape[
+60],"Decdeg" -> TypeSystem`PackageScope`AtomShape[60],"RAhms" -> TypeSystem`PackageScope`AtomShape[
+212.8`],"DecDMS" -> TypeSystem`PackageScope`AtomShape[212.8`],"Clase" -> TypeSystem`PackageScope`AtomShape[
+178.5`]]],DirectedInfinity[1],7,{All}]],9,DirectedInfinity[1],{}]],"InitialType" -> TypeSystem`Vector[
+TypeSystem`Struct[{"Entrada","ID","RAdeg","Decdeg","RAhms","DecDMS","Clase"},{TypeSystem`Atom[
+String],TypeSystem`Atom[String],TypeSystem`Atom[Real],TypeSystem`Atom[Real],TypeSystem`Atom[
+String],TypeSystem`Atom[String],TypeSystem`Atom[TypeSystem`Enumeration["Centro de c\[UAcute]mulo",
+"Estrella","Estrella m\[UAcute]ltiple","Sistema estelar"]]}],9],"Meta" -> Association[],
+"RowTarget" -> 20,"ColumnTarget" -> 10,"Shape" -> TypeSystem`PackageScope`HeaderShape[
+Association[{All,"Entrada"} -> 1,{All,"ID"} -> 1,{All,"RAdeg"} -> 1,{All,"Decdeg"} -> 1,
+{All,"RAhms"} -> 1,{All,"DecDMS"} -> 1,{All,"Clase"} -> 1],TypeSystem`PackageScope`Limited[
+TypeSystem`PackageScope`ColumnShape[TypeSystem`PackageScope`Limited[TypeSystem`PackageScope`RowShape[
+Association["Entrada" -> TypeSystem`PackageScope`AtomShape[67.2`],"ID" -> TypeSystem`PackageScope`AtomShape[
+268.8`],"RAdeg" -> TypeSystem`PackageScope`AtomShape[60],"Decdeg" -> TypeSystem`PackageScope`AtomShape[
+60],"RAhms" -> TypeSystem`PackageScope`AtomShape[212.8`],"DecDMS" -> TypeSystem`PackageScope`AtomShape[
+212.8`],"Clase" -> TypeSystem`PackageScope`AtomShape[178.5`]]],DirectedInfinity[1],
+7,{All}]],9,DirectedInfinity[1],{}]],"Type" -> TypeSystem`Vector[TypeSystem`Struct[
+{"Entrada","ID","RAdeg","Decdeg","RAhms","DecDMS","Clase"},{TypeSystem`Atom[String],TypeSystem`Atom[
+String],TypeSystem`Atom[Real],TypeSystem`Atom[Real],TypeSystem`Atom[String],TypeSystem`Atom[
+String],TypeSystem`Atom[TypeSystem`Enumeration["Centro de c\[UAcute]mulo","Estrella",
+"Estrella m\[UAcute]ltiple","Sistema estelar"]]}],9],"Path" -> {},"DisplayedRowCount" -> 9,
+"DisplayedColumnCount" -> 7,"DataRowCount" -> 9,"DataColumnCount" -> 7,"SortPaths" -> {},
+"SortDirections" -> {},"HiddenItemsMap" -> Null,"UpdateType" -> 1]],TypeSystem`NestedGrid`PackagePrivate`$outputID$$,Set[
+TypeSystem`NestedGrid`PackagePrivate`$path$$,{}],Set[TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+1],Set[TypeSystem`NestedGrid`PackagePrivate`$hPos$$,1],Set[TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+DynamicModule[{Set[TypeSystem`NestedGrid`PackagePrivate`renderedGrid,Deploy[Style[
+Grid[{{Item[Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["Entrada",Style["Entrada",
+FontColor -> RGBColor[0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],
+"LinkHand"],RuleDelayed[{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][
+{All,"Entrada"},1]]],Row[{Row[{Style["All",RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,
+0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+ImageSize -> {{1,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[
+0.9500473017990948`,0.9500473017990948`,0.9500473017990948`],Alignment -> {Left,Baseline}],Item[
+Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["ID",Style["ID",FontColor -> RGBColor[
+0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[
+{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"ID"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"ID",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+ImageSize -> {{1,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[
+0.9500473017990948`,0.9500473017990948`,0.9500473017990948`],Alignment -> {Left,Baseline}],Item[
+Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["RAdeg",Style["RAdeg",FontColor -> RGBColor[
+0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[
+{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"RAdeg"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"RAdeg",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],ImageSize -> {{1,Full},Automatic},
+ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[0.9500473017990948`,0.9500473017990948`,
+0.9500473017990948`],Alignment -> {Left,Baseline}],Item[Pane[Tooltip[EventHandler[
+MouseAppearance[Mouseover["Decdeg",Style["Decdeg",FontColor -> RGBColor[0.2749633796890805`,
+0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[{"MouseClicked",1},
+TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"Decdeg"},1]]],Row[{Row[
+{Style["All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"Decdeg",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],ImageSize -> {{1,Full},Automatic},
+ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[0.9500473017990948`,0.9500473017990948`,
+0.9500473017990948`],Alignment -> {Left,Baseline}],Item[Pane[Tooltip[EventHandler[
+MouseAppearance[Mouseover["RAhms",Style["RAhms",FontColor -> RGBColor[0.2749633796890805`,
+0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[{"MouseClicked",1},
+TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"RAhms"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"RAhms",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],ImageSize -> {{1,Full},Automatic},
+ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[0.9500473017990948`,0.9500473017990948`,
+0.9500473017990948`],Alignment -> {Left,Baseline}],Item[Pane[Tooltip[EventHandler[
+MouseAppearance[Mouseover["DecDMS",Style["DecDMS",FontColor -> RGBColor[0.2749633796890805`,
+0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[{"MouseClicked",1},
+TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"DecDMS"},1]]],Row[{Row[
+{Style["All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"DecDMS",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],ImageSize -> {{1,Full},Automatic},
+ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[0.9500473017990948`,0.9500473017990948`,
+0.9500473017990948`],Alignment -> {Left,Baseline}],Item[Pane[Tooltip[EventHandler[
+MouseAppearance[Mouseover["Clase",Style["Clase",FontColor -> RGBColor[0.2749633796890805`,
+0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[{"MouseClicked",1},
+TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"Clase"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"Clase",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],ImageSize -> {{1,Full},Automatic},
+ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[0.9500473017990948`,0.9500473017990948`,
+0.9500473017990948`],Alignment -> {Left,Baseline}]},{Item[Pane[Annotation[Tooltip[
+"11 Cas",Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,
+0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["beta Cas (Caph)",Row[{Row[{Style[RawBoxes["1"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["2.29452"],Row[{Row[{Style[RawBoxes["1"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["59.1498"],Row[{Row[{Style[RawBoxes["1"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["00:09:10.68518",Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["RAhms",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["+59:08:59.2120",Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella",Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Clase",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["54 Tau",Row[{Row[{Style[RawBoxes["2"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["gamma Tau (Prima Hyadum)",Row[{Row[{Style[RawBoxes["2"],
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[
+" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"ID",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["64.9483"],Row[{Row[{Style[RawBoxes["2"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["15.6276"],Row[{Row[{Style[RawBoxes["2"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["04:19:47.6039239005",Row[{Row[{Style[RawBoxes["2"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAhms",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["+15:37:39.511385129",Row[{Row[{Style[RawBoxes["2"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella",Row[{Row[{Style[RawBoxes["2"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Clase",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["Pleiades",Row[{Row[{Style[RawBoxes["3"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["M45 / Melotte 22",Row[{Row[{Style[RawBoxes["3"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["56.6008"],Row[{Row[{Style[RawBoxes["3"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["24.1139"],Row[{Row[{Style[RawBoxes["3"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["03:46:24.2",Row[{Row[{Style[RawBoxes["3"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["RAhms",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["+24:06:50",Row[{Row[{Style[RawBoxes["3"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Centro de c\[UAcute]mulo",Row[{Row[{Style[RawBoxes["3"],
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[
+" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"Clase",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+{3,Key["Clase"]},"Item",False],"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],
+ItemSize -> {Full,Automatic}]},{Item[Pane[Annotation[Tooltip["Acrux",Row[{Row[{Style[
+RawBoxes["4"],RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"Entrada",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+{4,Key["Entrada"]},"Item",False],"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],
+ItemSize -> {Full,Automatic}],Item[Pane[Annotation[Tooltip["alpha Cru AB",Row[{Row[
+{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"ID",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["186.65"],Row[{Row[{Style[RawBoxes["4"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["-63.0991"],Row[{Row[{Style[RawBoxes["4"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["12:26:35.89522",Row[{Row[{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["RAhms",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["-63:05:56.7343",Row[{Row[{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella m\[UAcute]ltiple",Row[{Row[{Style[RawBoxes["4"],
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[
+" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"Clase",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+{4,Key["Clase"]},"Item",False],"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],
+ItemSize -> {Full,Automatic}]},{Item[Pane[Annotation[Tooltip["Rigel",Row[{Row[{Style[
+RawBoxes["5"],RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"Entrada",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+{5,Key["Entrada"]},"Item",False],"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],
+ItemSize -> {Full,Automatic}],Item[Pane[Annotation[Tooltip["beta Ori",Row[{Row[{Style[
+RawBoxes["5"],RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"ID",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["78.6345"],Row[{Row[{Style[RawBoxes["5"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["-8.20164"],Row[{Row[{Style[RawBoxes["5"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["05:14:32.27210",Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["RAhms",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["-08:12:05.8981",Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella",Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Clase",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["2 CMa",Row[{Row[{Style[RawBoxes["6"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["beta CMa (Mirzam)",Row[{Row[{Style[RawBoxes["6"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["95.6749"],Row[{Row[{Style[RawBoxes["6"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["-17.9559"],Row[{Row[{Style[RawBoxes["6"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["06:22:41.9853527",Row[{Row[{Style[RawBoxes["6"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAhms",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["-17:57:21.307352",Row[{Row[{Style[RawBoxes["6"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella",Row[{Row[{Style[RawBoxes["6"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Clase",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["6 Sco",Row[{Row[{Style[RawBoxes["7"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["pi Sco (Fang)",Row[{Row[{Style[RawBoxes["7"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["ID",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["239.713"],Row[{Row[{Style[RawBoxes["7"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["-26.1141"],Row[{Row[{Style[RawBoxes["7"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["15:58:51.1132378",Row[{Row[{Style[RawBoxes["7"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAhms",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["-26:06:50.788602",Row[{Row[{Style[RawBoxes["7"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Sistema estelar",Row[{Row[{Style[RawBoxes["7"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Clase",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["18 Psc",Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["lambda Psc",Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["ID",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["355.512"],Row[{Row[{Style[RawBoxes["8"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["1.78004"],Row[{Row[{Style[RawBoxes["8"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["23:42:02.8053593984",Row[{Row[{Style[RawBoxes["8"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAhms",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["+01:46:48.151697051",Row[{Row[{Style[RawBoxes["8"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella",Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Clase",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["Mirfak",Row[{Row[{Style[RawBoxes["9"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["alpha Per (33 Per)",Row[{Row[{Style[RawBoxes["9"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["51.0807"],Row[{Row[{Style[RawBoxes["9"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["RAdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes["49.8612"],Row[{Row[{Style[RawBoxes["9"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["Decdeg",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["Decdeg"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["03:24:19.3700924",Row[{Row[{Style[RawBoxes["9"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["RAhms",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["RAhms"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["+49:51:40.245455",Row[{Row[{Style[RawBoxes["9"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["DecDMS",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["DecDMS"]},"Item",False],
+"Mouse"],ImageSize -> {{212.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["Estrella",Row[{Row[{Style[RawBoxes["9"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Clase",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["Clase"]},"Item",False],
+"Mouse"],ImageSize -> {{178.5`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]}},
+BaseStyle -> {ContextMenu -> Dynamic[CompoundExpression[TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger,
+Which[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`$lastOutputID,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]],{},SameQ[TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger,
+TypeSystem`NestedGrid`PackagePrivate`$lastContextMenuTrigger],TypeSystem`NestedGrid`PackagePrivate`$lastContextMenu,
+True,CompoundExpression[Set[TypeSystem`NestedGrid`PackagePrivate`$lastContextMenuTrigger,
+TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger],Set[TypeSystem`NestedGrid`PackagePrivate`$lastContextMenu,
+Block[{Set[TypeSystem`NestedGrid`PackagePrivate`$globalScrollPos,{TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$}]},
+With[{Set[TypeSystem`NestedGrid`PackagePrivate`lastPath$,TypeSystem`NestedGrid`PackagePrivate`$lastPath],Set[
+TypeSystem`NestedGrid`PackagePrivate`lastPathType$,TypeSystem`NestedGrid`PackagePrivate`$lastPathType],Set[
+TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$,TypeSystem`NestedGrid`PackagePrivate`$lastPathIsLeafHeader],Set[
+TypeSystem`NestedGrid`PackagePrivate`headerHidden$,And[MatchQ[TypeSystem`NestedGrid`PackagePrivate`$lastPathType,
+Alternatives["RowHeader","ColumnHeader"]],TypeSystem`NestedGrid`PackagePrivate`headerHiddenQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`allHidden$,TypeSystem`NestedGrid`PackagePrivate`allHiddenQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$]],Set[
+TypeSystem`NestedGrid`PackagePrivate`anyHidden$,TypeSystem`NestedGrid`PackagePrivate`anyHiddenQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$]],Set[
+TypeSystem`NestedGrid`PackagePrivate`sortDirection$,TypeSystem`NestedGrid`PackagePrivate`columnSortDirection[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$[
+"SortPaths"],TypeSystem`NestedGrid`PackagePrivate`$state$$["SortDirections"]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`haveData$,Not[FailureQ[TypeSystem`NestedGrid`PackagePrivate`datasetInitialData[
+TypeSystem`NestedGrid`PackagePrivate`$state$$]]]],Set[TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$,
+Not[FreeQ[TypeSystem`NestedGrid`PackagePrivate`$lastPath,Keys]]]},Join[{If[Or[Not[
+TypeSystem`NestedGrid`PackagePrivate`haveData$],Not[TypeSystem`NestedGrid`PackagePrivate`anyHidden$],
+TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$],Nothing,MenuItem[StringJoin["Show ",
+Which[Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"Item"],"",Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,
+"RowHeader"],"Row",Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"ColumnHeader"],
+"Column",True,""]],KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateHiddenItems[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][
+TypeSystem`NestedGrid`PackagePrivate`lastPath$,"remove"]],MenuEvaluator -> Automatic]],If[
+Or[Not[TypeSystem`NestedGrid`PackagePrivate`haveData$],TypeSystem`NestedGrid`PackagePrivate`pathEmptyQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$],
+TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$,And[TypeSystem`NestedGrid`PackagePrivate`allHidden$,
+TypeSystem`NestedGrid`PackagePrivate`headerHidden$]],Nothing,MenuItem[StringJoin[
+"Hide ",Which[Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"Item"],"",
+Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"RowHeader"],"Row",Equal[
+TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"ColumnHeader"],"Column",True,
+""]],KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateHiddenItems[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][TypeSystem`NestedGrid`PackagePrivate`lastPath$,
+"add"]],MenuEvaluator -> Automatic]],Delimiter},If[And[TypeSystem`NestedGrid`PackagePrivate`haveData$,
+MatchQ[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,Alternatives["ColumnHeader",
+"KeyDummy"]],TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$,Not[TypeSystem`NestedGrid`PackagePrivate`allHidden$]],
+{If[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`sortDirection$,"Ascending"],MenuItem[
+"Sort",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateSort[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+TypeSystem`NestedGrid`PackagePrivate`lastPath$,"Ascending"]],MenuEvaluator -> Automatic],
+Nothing],If[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`sortDirection$,"Descending"],
+MenuItem["Reverse Sort",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateSort[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][TypeSystem`NestedGrid`PackagePrivate`lastPath$,
+"Descending"]],MenuEvaluator -> Automatic],Nothing],If[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`sortDirection$,
+None],MenuItem["Unsort",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateSort[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][TypeSystem`NestedGrid`PackagePrivate`lastPath$,
+None]],MenuEvaluator -> Automatic],Nothing],Delimiter},{}],{MenuItem["Copy Position to Clipboard",
+KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[TypeSystem`NestedGrid`PackagePrivate`copyClip]],
+MenuEvaluator -> Automatic],If[TypeSystem`NestedGrid`PackagePrivate`haveData$,MenuItem[
+"Copy Data to Clipboard",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`copyClip]],
+MenuEvaluator -> Automatic],Nothing],Delimiter,MenuItem["Paste Position in New Cell",
+KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[TypeSystem`NestedGrid`PackagePrivate`cellPaste]],
+MenuEvaluator -> Automatic],If[TypeSystem`NestedGrid`PackagePrivate`haveData$,MenuItem[
+"Paste Data in New Cell",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`cellPaste]],
+MenuEvaluator -> Automatic],Nothing]}]]]]]]]],FontFamily -> "Source Sans Pro",FontSize -> 14,FontWeight -> Plain},
+Dividers -> All,FrameStyle -> RGBColor[0.749003690406716`,0.749003690406716`,0.749003690406716`],
+Spacings -> {0,0},Alignment -> Left,BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 14,FontWeight -> Plain}],
+LineBreakWithin -> False,ContextMenu -> {},NumberMarks -> False,ShowAutoStyles -> False]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`initialQ,True]},Dynamic[TypeSystem`NestedGrid`PackagePrivate`setupViewPath[
+TypeSystem`NestedGrid`PackagePrivate`$path$$,CompoundExpression[If[Not[TypeSystem`NestedGrid`PackagePrivate`initialQ],
+Module[{Set[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$,$Failed],Set[TypeSystem`NestedGrid`PackagePrivate`tmpData$,
+TypeSystem`NestedGrid`PackagePrivate`datasetData[TypeSystem`NestedGrid`PackagePrivate`$state$$]]},
+CompoundExpression[Set[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$,If[FailureQ[
+TypeSystem`NestedGrid`PackagePrivate`tmpData$],TypeSystem`NestedGrid`PackagePrivate`renderedGrid,
+TypeSystem`NestedGrid`PackagePrivate`renderGrid[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+TypeSystem`NestedGrid`PackagePrivate`tmpData$]]],If[Not[FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]],
+Set[TypeSystem`NestedGrid`PackagePrivate`renderedGrid,TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]],
+Null]]],Set[TypeSystem`NestedGrid`PackagePrivate`initialQ,False],TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,If[FailureQ[TypeSystem`NestedGrid`PackagePrivate`renderedGrid],
+TypeSystem`SparseGrid[TypeSystem`H["(data no longer present)"]],TypeSystem`NestedGrid`PackagePrivate`renderedGrid]]],
+RuleDelayed[TrackedSymbols,{TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$}]],
+RuleDelayed[DynamicModuleValues,{}]]],Set[TypeSystem`NestedGrid`PackagePrivate`$topBar$$,
+Dynamic[TypeSystem`NestedGrid`PackagePrivate`makeFramedBar[TypeSystem`PackageScope`SubViewPathbar[
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`updateState[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]]],RuleDelayed[TrackedSymbols,{TypeSystem`NestedGrid`PackagePrivate`$path$$}]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$,Dynamic[Replace[Replace[TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$,
+{TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][Null,Blank[]] -> "",RuleDelayed[
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][Pattern[TypeSystem`NestedGrid`PackagePrivate`path$,
+Blank[]],Pattern[TypeSystem`NestedGrid`PackagePrivate`pathType$,Blank[]],Pattern[
+TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$,Blank[]]],CompoundExpression[Increment[
+TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger],Set[TypeSystem`NestedGrid`PackagePrivate`$lastPath,
+TypeSystem`NestedGrid`PackagePrivate`path$],Set[TypeSystem`NestedGrid`PackagePrivate`$lastPathType,
+TypeSystem`NestedGrid`PackagePrivate`pathType$],Set[TypeSystem`NestedGrid`PackagePrivate`$lastPathIsLeafHeader,
+TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$],Set[TypeSystem`NestedGrid`PackagePrivate`$lastOutputID,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]],
+TypeSystem`NestedGrid`PackagePrivate`makePathTrail[TypeSystem`NestedGrid`PackagePrivate`path$,
+TypeSystem`NestedGrid`PackagePrivate`makePathElements]]],RuleDelayed[Null,Spacer[
+10]],RuleDelayed[Blank[],Spacer[10]]}],RuleDelayed[Pattern[TypeSystem`NestedGrid`PackagePrivate`bar,
+Except[Alternatives[Blank[Spacer],""]]],TypeSystem`NestedGrid`PackagePrivate`makeFramedPathbar[
+TypeSystem`NestedGrid`PackagePrivate`bar]]],RuleDelayed[TrackedSymbols,{TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$}]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$,TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+"d84e211b-0a1f-4807-9794-5405081edebf"][{5,Key["PDF"]},"Item",False]]},DynamicWrapperBox[
+DynamicBox[ToBoxes[Dataset`DatasetContent[2,"Path" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$path$$],
+"Grid" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$grid$$],"State" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$state$$],
+"VPos" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$vPos$$],"HPos" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$hPos$$],
+"TopBar" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$topBar$$],"BottomBar" -> Hold[
+TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$],"OutputID" -> Hold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]],StandardForm],RuleDelayed[TrackedSymbols,
+{TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$}]],
+Set[TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$,MouseAnnotation[]]],RuleDelayed[
+Initialization,Set[TypeSystem`NestedGrid`PackagePrivate`$outputID$$,CreateUUID[]]],
+RuleDelayed[DynamicModuleValues,{}],BaseStyle -> {LineBreakWithin -> False,LightDarkAutoColorRules -> Association[
+"MarkedColors" -> True]},RuleDelayed[UnsavedVariables,{TypeSystem`NestedGrid`PackagePrivate`$outputID$$}],
+ExpressionUUID -> "4eae3714-bdf0-4f82-a4c4-eb77407f287c"],Deploy,DefaultBaseStyle -> "Deploy"],
+Dataset`InterpretDataset[1],Selectable -> False,Editable -> False,SelectWithContents -> True],
+StandardForm],"Output",CellLabel -> "Out[188]= ",ExpressionUUID -> "9dc3bd72-a2ad-4bc1-b67d-76cd91e93994"]},
+Open],ExpressionUUID -> "2c0fdeeb-02d8-4d51-9040-7d91ee30a035"],Cell[
+BoxData[RowBox[
+{"(*"," ",RowBox[{RowBox[{"Coordenadas"," ","del"," ",RowBox[{"observatorio",":"," ","In\[IAcute]rida"}]}],","," ","Guain\[IAcute]a"}]," ","*)"}]],
+"Input",CellLabel -> "In[189]:= ",ExpressionUUID -> "f12d73bb-ed16-44e6-b47b-5374e3552e2b"],Cell[
+BoxData[
+{RowBox[{RowBox[{"latitud"," ","="," ",RowBox[{"3"," ","+"," ",RowBox[{"51","/","60"}]," ","+"," ",RowBox[
+{"43.5","/","3600"}]}]}],";"}],"\n",RowBox[{RowBox[{"longitud"," ","="," ",RowBox[
+{"-",RowBox[{"(",RowBox[{"67"," ","+"," ",RowBox[{"55","/","60"}]," ","+"," ",RowBox[
+{"42.4","/","3600"}]}],")"}]}]}],";"}]}],"Input",CellLabel -> "In[190]:= ",ExpressionUUID -> "85eb1402-c80a-486a-b420-6dfa4fb66319"],Cell[
+BoxData[
+{RowBox[{RowBox[{"phi"," ","="," ",RowBox[{"latitud"," ","Degree"}]}],";"}],"\n",RowBox[
+{RowBox[{"horaUTC"," ","="," ","23.5"}],";"}]}],"Input",CellLabel -> "In[192]:= ",
+ExpressionUUID -> "ab2f5d7a-886c-4e53-9910-b9d1adb0af39"],Cell[
+BoxData[{RowBox[{RowBox[
+{"umbral"," ","="," ","15"}],";"}],"\n",RowBox[{RowBox[{"yInferior"," ","="," ",RowBox[
+{"-","90"}]}],";"}]}],"Input",CellLabel -> "In[194]:= ",ExpressionUUID -> "fb7477a8-e2a4-4a0a-924c-8d4a6562a890"],Cell[
+BoxData[
+RowBox[{RowBox[{"nombresMes"," ","="," ",RowBox[{"{","\n","  ",RowBox[{"\"Ene\"",","," ","\"Feb\"",","," ","\"Mar\"",","," ","\"Abr\"",","," ","\"May\"",","," ","\"Jun\"",",","\n","  ","\"Jul\"",","," ","\"Ago\"",","," ","\"Sep\"",","," ","\"Oct\"",","," ","\"Nov\"",","," ","\"Dic\""}],"\n","}"}]}],";"}]],
+"Input",CellLabel -> "In[196]:= ",ExpressionUUID -> "dc256526-7873-44c9-82fd-a990b0c456e6"],Cell[
+BoxData[
+{RowBox[{RowBox[{"(*"," ",RowBox[{"Altitud"," ","para"," ","cualquier"," ","estrella"," ","de"," ","la"," ","lista"}]," ","*)"}],"\n",RowBox[
+{RowBox[{RowBox[{"altitudParaEstrella","[",RowBox[{"fecha_",","," ","raDeg_",","," ","decDeg_"}],"]"}]," ",":="," ",RowBox[
+{"Module","[","\n","  ",RowBox[{RowBox[{"{",RowBox[{"jd",","," ","t",","," ","gmst",","," ","lst",","," ","anguloHorario",","," ","delta",","," ","senoAltitud"}],"}"}],",","\n","  ",RowBox[
+{RowBox[{"jd"," ","="," ",RowBox[{"fechaJuliana","[",RowBox[{"fecha",","," ","horaUTC"}],"]"}]}],";","\n","  ",RowBox[
+{"t"," ","="," ",RowBox[{RowBox[{"(",RowBox[{"jd"," ","-"," ","2451545.0"}],")"}],"/","36525"}]}],";","\n","  ",RowBox[
+{"gmst"," ","="," ",RowBox[{"Mod","[","\n","    ",RowBox[{RowBox[{"280.46061837"," ","+","\n","      ",RowBox[
+{"360.98564736629"," ",RowBox[{"(",RowBox[{"jd"," ","-"," ","2451545.0"}],")"}]}]," ","+","\n","      ",RowBox[
+{"0.000387933"," ",RowBox[{"t","^","2"}]}]," ","-","\n","      ",RowBox[{RowBox[{"t","^","3"}],"/","38710000"}]}],",","\n","    ","360"}],"\n","  ","]"}]}],";","\n","  ",RowBox[
+{"lst"," ","="," ",RowBox[{"Mod","[",RowBox[{RowBox[{"gmst"," ","+"," ","longitud"}],","," ","360"}],"]"}]}],";","\n","  ",RowBox[
+{"anguloHorario"," ","="," ",RowBox[{RowBox[{"(",RowBox[{"lst"," ","-"," ","raDeg"}],")"}]," ","Degree"}]}],";","\n","  ",RowBox[
+{"delta"," ","="," ",RowBox[{"decDeg"," ","Degree"}]}],";","\n","  ",RowBox[{"senoAltitud"," ","=","\n","    ",RowBox[
+{RowBox[{RowBox[{"Sin","[","phi","]"}]," ",RowBox[{"Sin","[","delta","]"}]}]," ","+","\n","    ",RowBox[
+{RowBox[{"Cos","[","phi","]"}]," ",RowBox[{"Cos","[","delta","]"}]," ",RowBox[{"Cos","[","anguloHorario","]"}]}]}]}],";","\n","  ",RowBox[
+{RowBox[{"ArcSin","[",RowBox[{"Clip","[",RowBox[{"senoAltitud",","," ",RowBox[{"{",RowBox[
+{RowBox[{"-","1"}],","," ","1"}],"}"}]}],"]"}],"]"}],"/","Degree"}]}]}],"]"}]}],";"}]}],"\n",RowBox[
+{RowBox[{"(*"," ",RowBox[{"Generar"," ","y"," ","exportar"," ","una"," ","gr\[AAcute]fica"," ","por"," ","cada"," ","entrada"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"resultados"," ","="," ",RowBox[{"Table","[","\n","  ",RowBox[{RowBox[{"Module","[","\n","    ",RowBox[
+{RowBox[{"{","\n","      ",RowBox[{"raDeg",","," ","decDeg",","," ","altitudes",","," ","n",","," ","datosGrafica",",","\n","      ","iniciosMes",","," ","ticksMeses",","," ","cruces",","," ","cruces0",","," ","cruces10",",","\n","      ","lineasVerticales0",","," ","lineasVerticales10",",","\n","      ","fechaEtiqueta",","," ","etiquetasCruces0",","," ","etiquetasCruces10",",","\n","      ","poligonosSombreado",","," ","etiquetaHorizonte",",","\n","      ","x",","," ","y1",","," ","y2",","," ","poligonos",","," ","grafica",","," ","nombreArchivo",",","\n","      ","pdf",","," ","tiff"}],"\n","    ","}"}],",","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Coordenadas"," ","de"," ","la"," ","estrella"}]," ","*)"}],"\n","    ",RowBox[
+{RowBox[{"raDeg"," ","="," ",RowBox[{"estrella","[","\"RAdeg\"","]"}]}],";","\n","    ",RowBox[
+{"decDeg"," ","="," ",RowBox[{"estrella","[","\"Decdeg\"","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{RowBox[{RowBox[{"Altitud"," ","diaria"," ","a"," ","las"," ","18"}],":","30"}],","," ",RowBox[
+{"hora"," ","de"," ","Colombia"}]}]," ","*)"}],"\n","    ",RowBox[{"altitudes"," ","="," ",RowBox[
+{RowBox[{RowBox[{"altitudParaEstrella","[",RowBox[{"#",","," ","raDeg",","," ","decDeg"}],"]"}]," ","&"}]," ","/@"," ","fechas"}]}],";","\n","    ",RowBox[
+{"n"," ","="," ",RowBox[{"Length","[","altitudes","]"}]}],";","\n","    ",RowBox[
+{"datosGrafica"," ","="," ",RowBox[{"Transpose","[",RowBox[{"{",RowBox[{RowBox[{"Range","[","n","]"}],","," ","altitudes"}],"}"}],"]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Ticks"," ","mensuales"}]," ","*)"}],"\n","    ",RowBox[{"iniciosMes"," ","="," ",RowBox[
+{"{",RowBox[{"1",","," ","32",","," ","60",","," ","91",","," ","121",","," ","152",",","\n","      ","182",","," ","213",","," ","244",","," ","274",","," ","305",","," ","335"}],"}"}]}],";","\n","    ",RowBox[
+{"ticksMeses"," ","="," ",RowBox[{"Table","[","\n","      ",RowBox[{RowBox[{"{",RowBox[
+{RowBox[{"iniciosMes","[",RowBox[{"[","i","]"}],"]"}],",","\n","        ",RowBox[
+{"Style","[",RowBox[{RowBox[{"nombresMes","[",RowBox[{"[","i","]"}],"]"}],","," ","14",","," ","Black"}],"]"}]}],"}"}],",","\n","      ",RowBox[
+{"{",RowBox[{"i",","," ",RowBox[{"Length","[","nombresMes","]"}]}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Intersecciones"," ","con"," ","0"," ","y"," ","10"," ","grados"}]," ","*)"}],"\n","    ",RowBox[
+{RowBox[{"cruces","[","nivel_","]"}]," ",":="," ",RowBox[{"DeleteCases","[","\n","      ",RowBox[
+{RowBox[{"Table","[","\n","        ",RowBox[{RowBox[{"Which","[","\n","          ",RowBox[
+{RowBox[{RowBox[{"altitudes","[",RowBox[{"[","i","]"}],"]"}]," ","=="," ","nivel"}],",","\n","            ",RowBox[
+{"{",RowBox[{"i",","," ","nivel"}],"}"}],",","\n","          ",RowBox[{RowBox[{RowBox[
+{"(",RowBox[{RowBox[{"altitudes","[",RowBox[{"[","i","]"}],"]"}]," ","-"," ","nivel"}],")"}],"*","\n","            ",RowBox[
+{"(",RowBox[{RowBox[{"altitudes","[",RowBox[{"[",RowBox[{"i"," ","+"," ","1"}],"]"}],"]"}]," ","-"," ","nivel"}],")"}]}]," ","<"," ","0"}],",","\n","            ",RowBox[
+{"{","\n","              ",RowBox[{RowBox[{"i"," ","+"," ",RowBox[{RowBox[{"(",RowBox[
+{"nivel"," ","-"," ",RowBox[{"altitudes","[",RowBox[{"[","i","]"}],"]"}]}],")"}],"/","\n","                ",RowBox[
+{"(",RowBox[{RowBox[{"altitudes","[",RowBox[{"[",RowBox[{"i"," ","+"," ","1"}],"]"}],"]"}]," ","-"," ",RowBox[
+{"altitudes","[",RowBox[{"[","i","]"}],"]"}]}],")"}]}]}],",","\n","              ","nivel"}],"\n","            ","}"}],",","\n","          ","True",","," ","Nothing"}],"\n","        ","]"}],",","\n","        ",RowBox[
+{"{",RowBox[{"i",","," ","1",","," ",RowBox[{"n"," ","-"," ","1"}]}],"}"}]}],"\n","      ","]"}],",","\n","      ","Nothing"}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"cruces0"," ","="," ",RowBox[{"cruces","[","0","]"}]}],";","\n","    ",RowBox[{"cruces10"," ","="," ",RowBox[
+{"cruces","[","umbral","]"}]}],";","\n","    ",RowBox[{"(*"," ",RowBox[{"L\[IAcute]neas"," ","verticales"," ","desde"," ","cada"," ","intersecci\[OAcute]n"," ","hasta"," ","abajo"}]," ","*)"}],"\n","    ",RowBox[
+{"lineasVerticales0"," ","="," ",RowBox[{"Table","[","\n","      ",RowBox[{RowBox[
+{"{","\n","        ",RowBox[{"Dotted",",","\n","        ",RowBox[{"AbsoluteThickness","[","1.2","]"}],",","\n","        ",RowBox[
+{"Line","[",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{RowBox[{"p","[",RowBox[{"[","1","]"}],"]"}],","," ",RowBox[
+{"p","[",RowBox[{"[","2","]"}],"]"}]}],"}"}],","," ",RowBox[{"{",RowBox[{RowBox[{"p","[",RowBox[
+{"[","1","]"}],"]"}],","," ","yInferior"}],"}"}]}],"}"}],"]"}]}],"\n","      ","}"}],",","\n","      ",RowBox[
+{"{",RowBox[{"p",","," ","cruces0"}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"lineasVerticales10"," ","="," ",RowBox[{"Table","[","\n","      ",RowBox[{RowBox[
+{"{","\n","        ",RowBox[{"Dotted",",","\n","        ",RowBox[{"AbsoluteThickness","[","1.2","]"}],",","\n","        ",RowBox[
+{"Line","[",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{RowBox[{"p","[",RowBox[{"[","1","]"}],"]"}],","," ",RowBox[
+{"p","[",RowBox[{"[","2","]"}],"]"}]}],"}"}],","," ",RowBox[{"{",RowBox[{RowBox[{"p","[",RowBox[
+{"[","1","]"}],"]"}],","," ","yInferior"}],"}"}]}],"}"}],"]"}]}],"\n","      ","}"}],",","\n","      ",RowBox[
+{"{",RowBox[{"p",","," ","cruces10"}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Etiquetas"," ","de"," ",RowBox[{"fecha",":"," ",RowBox[{"DD"," ","de"," ","MM"}]}]}]," ","*)"}],"\n","    ",RowBox[
+{RowBox[{"fechaEtiqueta","[","x_","]"}]," ",":="," ",RowBox[{"Module","[","\n","      ",RowBox[
+{RowBox[{"{",RowBox[{"fecha",","," ","dia",","," ","mes"}],"}"}],",","\n","      ",RowBox[
+{RowBox[{"fecha"," ","="," ",RowBox[{"DatePlus","[",RowBox[{RowBox[{"fechas","[",RowBox[
+{"[","1","]"}],"]"}],","," ",RowBox[{"Round","[",RowBox[{"x"," ","-"," ","1"}],"]"}]}],"]"}]}],";","\n","      ",RowBox[
+{"dia"," ","="," ",RowBox[{"DateValue","[",RowBox[{"fecha",","," ","\"Day\""}],"]"}]}],";","\n","      ",RowBox[
+{"mes"," ","="," ",RowBox[{"DateValue","[",RowBox[{"fecha",","," ","\"Month\""}],"]"}]}],";","\n","      ",RowBox[
+{RowBox[{"IntegerString","[",RowBox[{"dia",","," ","10",","," ","2"}],"]"}]," ","<>","\n","        ","\" de \""," ","<>"," ",RowBox[
+{"nombresMes","[",RowBox[{"[","mes","]"}],"]"}]}]}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"etiquetasCruces0"," ","="," ",RowBox[{"Table","[","\n","      ",RowBox[{RowBox[
+{"Inset","[","\n","        ",RowBox[{RowBox[{"Rotate","[","\n","          ",RowBox[
+{RowBox[{"Style","[","\n","            ",RowBox[{RowBox[{"fechaEtiqueta","[",RowBox[
+{"p","[",RowBox[{"[","1","]"}],"]"}],"]"}],","," ","10",",","\n","            ",RowBox[
+{"FontFamily"," ","\[Rule]"," ","\"Times\""}],","," ","Black",",","\n","            ",RowBox[
+{"Background"," ","\[Rule]"," ","White"}]}],"\n","          ","]"}],",","\n","          ",RowBox[
+{"Pi","/","2"}]}],"\n","        ","]"}],",","\n","        ",RowBox[{"{",RowBox[{RowBox[
+{"p","[",RowBox[{"[","1","]"}],"]"}],","," ",RowBox[{"yInferior"," ","+"," ","25"}]}],"}"}]}],"\n","      ","]"}],",","\n","      ",RowBox[
+{"{",RowBox[{"p",","," ","cruces0"}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"etiquetasCruces10"," ","="," ",RowBox[{"Table","[","\n","      ",RowBox[{RowBox[
+{"Inset","[","\n","        ",RowBox[{RowBox[{"Rotate","[","\n","          ",RowBox[
+{RowBox[{"Style","[","\n","            ",RowBox[{RowBox[{"fechaEtiqueta","[",RowBox[
+{"p","[",RowBox[{"[","1","]"}],"]"}],"]"}],","," ","10",",","\n","            ",RowBox[
+{"FontFamily"," ","\[Rule]"," ","\"Times\""}],","," ","Black",",","\n","            ",RowBox[
+{"Background"," ","\[Rule]"," ","White"}]}],"\n","          ","]"}],",","\n","          ",RowBox[
+{"Pi","/","2"}]}],"\n","        ","]"}],",","\n","        ",RowBox[{"{",RowBox[{RowBox[
+{"p","[",RowBox[{"[","1","]"}],"]"}],","," ",RowBox[{"yInferior"," ","+"," ","25"}]}],"}"}]}],"\n","      ","]"}],",","\n","      ",RowBox[
+{"{",RowBox[{"p",","," ","cruces10"}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{RowBox[{"Sombreado",":"," ",RowBox[{"gris"," ","claro"," ","entre"," ","curva"," ","y"," ","horizonte"}]}],",","\n","       ",RowBox[
+{"gris"," ","oscuro"," ","bajo"," ","el"," ","horizonte"}]}]," ","*)"}],"\n","    ",RowBox[
+{"poligonosSombreado"," ","="," ",RowBox[{"Table","[","\n","      ",RowBox[{RowBox[
+{"Module","[",RowBox[{RowBox[{"{",RowBox[{"y1",","," ","y2",","," ",RowBox[{"poligonos"," ","="," ",RowBox[
+{"{","}"}]}]}],"}"}],",","\n","        ",RowBox[{RowBox[{"y1"," ","="," ",RowBox[
+{"altitudes","[",RowBox[{"[","i","]"}],"]"}]}],";","\n","        ",RowBox[{"y2"," ","="," ",RowBox[
+{"altitudes","[",RowBox[{"[",RowBox[{"i"," ","+"," ","1"}],"]"}],"]"}]}],";","\n","        ",RowBox[
+{"If","[",RowBox[{RowBox[{RowBox[{RowBox[{"Max","[",RowBox[{"y1",","," ","y2"}],"]"}]," ",">"," ","0"}]," ","&&"," ",RowBox[
+{RowBox[{"Min","[",RowBox[{"y1",","," ","y2"}],"]"}]," ","<"," ","umbral"}]}],",","\n","          ",RowBox[
+{RowBox[{"AppendTo","[","\n","            ",RowBox[{"poligonos",",","\n","            ",RowBox[
+{"{","\n","              ",RowBox[{RowBox[{"GrayLevel","[","0.90","]"}],",","\n","              ",RowBox[
+{"Polygon","[",RowBox[{"{","\n","                ",RowBox[{RowBox[{"{",RowBox[{"i",","," ",RowBox[
+{"Max","[",RowBox[{"0",","," ",RowBox[{"Min","[",RowBox[{"y1",","," ","umbral"}],"]"}]}],"]"}]}],"}"}],",","\n","                ",RowBox[
+{"{",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ",RowBox[{"Max","[",RowBox[{"0",","," ",RowBox[
+{"Min","[",RowBox[{"y2",","," ","umbral"}],"]"}]}],"]"}]}],"}"}],",","\n","                ",RowBox[
+{"{",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ","0"}],"}"}],",","\n","                ",RowBox[
+{"{",RowBox[{"i",","," ","0"}],"}"}]}],"\n","              ","}"}],"]"}]}],"\n","            ","}"}]}],"\n","          ","]"}],";"}]}],"\n","        ","]"}],";","\n","        ",RowBox[
+{"If","[",RowBox[{RowBox[{RowBox[{"Min","[",RowBox[{"y1",","," ","y2"}],"]"}]," ","<"," ","0"}],",","\n","          ",RowBox[
+{RowBox[{"AppendTo","[","\n","            ",RowBox[{"poligonos",",","\n","            ",RowBox[
+{"{","\n","              ",RowBox[{RowBox[{"GrayLevel","[","0.75","]"}],",","\n","              ",RowBox[
+{"Polygon","[",RowBox[{"{","\n","                ",RowBox[{RowBox[{"{",RowBox[{"i",","," ","0"}],"}"}],",","\n","                ",RowBox[
+{"{",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ","0"}],"}"}],",","\n","                ",RowBox[
+{"{",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ",RowBox[{"Min","[",RowBox[{"y2",","," ","0"}],"]"}]}],"}"}],",","\n","                ",RowBox[
+{"{",RowBox[{"i",","," ",RowBox[{"Min","[",RowBox[{"y1",","," ","0"}],"]"}]}],"}"}]}],"\n","              ","}"}],"]"}]}],"\n","            ","}"}]}],"\n","          ","]"}],";"}]}],"\n","        ","]"}],";","\n","        ","poligonos"}]}],"\n","      ","]"}],",","\n","      ",RowBox[
+{"{",RowBox[{"i",","," ","1",","," ",RowBox[{"n"," ","-"," ","1"}]}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Etiquetas"," ","de"," ","referencia"}]," ","*)"}],"\n","    ",RowBox[
+{"etiquetaHorizonte"," ","="," ",RowBox[{"Inset","[","\n","      ",RowBox[{RowBox[
+{"Style","[",RowBox[{"\"Horizonte\"",",","11",","," ",RowBox[{"FontFamily"," ","\[Rule]"," ","\"Times\""}],",","\n","        ","Black",","," ",RowBox[
+{"Background"," ","\[Rule]"," ","White"}]}],"]"}],",","\n","      ",RowBox[{"{",RowBox[
+{"23",","," ","2.5"}],"}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[{"x"," ","="," ",RowBox[
+{"First","@",RowBox[{"FirstPosition","[",RowBox[{"altitudes",","," ",RowBox[{"Min","[","altitudes","]"}]}],"]"}]}]}],";","\n"," ","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Gr\[AAcute]fica"," ",RowBox[{"final",":"," ",RowBox[{"mismo"," ","dise\[NTilde]o"," ","de"," ","impresi\[OAcute]n"}]}]}]," ","*)"}],"\n","    ",RowBox[
+{"grafica"," ","="," ",RowBox[{"Show","[","\n","      ",RowBox[{RowBox[{"Graphics","[","\n","        ",RowBox[
+{"{","\n","          ",RowBox[{"poligonosSombreado",",","\n","          ",RowBox[
+{"{",RowBox[{"Black",","," ",RowBox[{"AbsoluteThickness","[","0.9","]"}],",","\n","            ",RowBox[
+{"Line","[",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{"1",","," ","0"}],"}"}],","," ",RowBox[
+{"{",RowBox[{"n",","," ","0"}],"}"}]}],"}"}],"]"}]}],"}"}],",","\n","          ",RowBox[
+{"{",RowBox[{"Black",","," ","Dashed",","," ",RowBox[{"AbsoluteThickness","[","0.9","]"}],",","\n","            ",RowBox[
+{"Line","[",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{"1",","," ","umbral"}],"}"}],","," ",RowBox[
+{"{",RowBox[{"n",","," ","umbral"}],"}"}]}],"}"}],"]"}]}],"}"}],",","\n","          ","lineasVerticales0",",","\n","          ","lineasVerticales10",",","\n","          ",RowBox[
+{"{",RowBox[{"Black",","," ",RowBox[{"AbsoluteThickness","[","1.8","]"}],",","\n","            ",RowBox[
+{"Line","[","datosGrafica","]"}]}],"}"}],",","\n","          ","etiquetasCruces0",",","\n","          ","etiquetasCruces10",",","\n","          ","etiquetaHorizonte"}],"\n","       ","\n","        ","}"}],"\n","      ","]"}],",","\n","      ",RowBox[
+{"Frame"," ","\[Rule]"," ","True"}],",","\n","      ",RowBox[{"FrameLabel"," ","\[Rule]"," ",RowBox[
+{"{","\n","        ",RowBox[{RowBox[{"Style","[",RowBox[{"\"Fecha\"",","," ","12",","," ",RowBox[
+{"FontFamily"," ","\[Rule]"," ","\"Times\""}],","," ","Black"}],"]"}],",","\n","        ",RowBox[
+{"Style","[",RowBox[{"\"Altitud (grados)\"",","," ","12",","," ",RowBox[{"FontFamily"," ","\[Rule]"," ","\"Times\""}],","," ","Black"}],"]"}]}],"\n","      ","}"}]}],",","\n","      ",RowBox[
+{"FrameTicks"," ","\[Rule]"," ",RowBox[{"{","\n","        ",RowBox[{RowBox[{"{","\n","          ",RowBox[
+{RowBox[{"Table","[","\n","            ",RowBox[{RowBox[{"{",RowBox[{"y",","," ",RowBox[
+{"Style","[",RowBox[{RowBox[{"ToString","[","y","]"}],","," ","11",",","\n","              ",RowBox[
+{"FontFamily"," ","\[Rule]"," ","\"Times\""}],","," ","Black"}],"]"}]}],"}"}],",","\n","            ",RowBox[
+{"{",RowBox[{"y",","," ",RowBox[{"-","90"}],","," ","90",","," ","15"}],"}"}]}],"\n","          ","]"}],",","\n","          ","None"}],"\n","        ","}"}],",","\n","        ",RowBox[
+{"{",RowBox[{"ticksMeses",","," ","None"}],"}"}]}],"\n","      ","}"}]}],",","\n","      ",RowBox[
+{"FrameTicksStyle"," ","\[Rule]"," ",RowBox[{"Directive","[",RowBox[{"Black",","," ","11"}],"]"}]}],",","\n","      ",RowBox[
+{"FrameStyle"," ","\[Rule]"," ",RowBox[{"Directive","[",RowBox[{"Black",","," ",RowBox[
+{"AbsoluteThickness","[","0.8","]"}]}],"]"}]}],",","\n","      ",RowBox[{"PlotRange"," ","\[Rule]"," ",RowBox[
+{"{",RowBox[{RowBox[{"{",RowBox[{"1",","," ","n"}],"}"}],","," ",RowBox[{"{",RowBox[
+{"yInferior",","," ","90"}],"}"}]}],"}"}]}],",","\n","      ",RowBox[{"PlotRangePadding"," ","\[Rule]"," ","None"}],",","\n","      ",RowBox[
+{"PlotRangeClipping"," ","\[Rule]"," ","True"}],",","\n","      ",RowBox[{"ImagePadding"," ","\[Rule]"," ",RowBox[
+{"{",RowBox[{RowBox[{"{",RowBox[{"58",","," ","12"}],"}"}],","," ",RowBox[{"{",RowBox[
+{"42",","," ","10"}],"}"}]}],"}"}]}],",","\n","      ",RowBox[{"ImageMargins"," ","\[Rule]"," ","0"}],",","\n","      ",RowBox[
+{"ImageSize"," ","\[Rule]"," ","510"}],",","\n","      ",RowBox[{"AspectRatio"," ","\[Rule]"," ","0.62"}],",","\n","      ",RowBox[
+{"PlotLabel"," ","\[Rule]"," ","None"}],",","\n","      ",RowBox[{"GridLines"," ","\[Rule]"," ","None"}],",","\n","      ",RowBox[
+{"Background"," ","\[Rule]"," ","White"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Nombre"," ","de"," ","archivo"," ","basado"," ","en"," ","la"," ","entrada"}]," ","*)"}],"\n","    ",RowBox[
+{"nombreArchivo"," ","="," ",RowBox[{"StringReplace","[","\n","      ",RowBox[{RowBox[
+{"estrella","[","\"Entrada\"","]"}],",","\n","      ",RowBox[{"{","\n","        ",RowBox[
+{RowBox[{"\" \""," ","\[Rule]"," ","\"_\""}],",","\n","        ",RowBox[{"\"/\""," ","\[Rule]"," ","\"-\""}],",","\n","        ",RowBox[
+{"\"\\\\\""," ","\[Rule]"," ","\"-\""}],",","\n","        ",RowBox[{"\":\""," ","\[Rule]"," ","\"-\""}]}],"\n","      ","}"}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"(*"," ",RowBox[{"Exportar"," ","PDF"," ","vectorial"," ","y"," ","TIFF"," ","de"," ","600"," ","dpi"}]," ","*)"}],"\n","    ",RowBox[
+{"pdf"," ","="," ",RowBox[{"CloudExport","[","\n","      ",RowBox[{"grafica",",","\n","      ","\"PDF\"",",","\n","      ",RowBox[
+{"nombreArchivo"," ","<>"," ","\".pdf\""}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"tiff"," ","="," ",RowBox[{"CloudExport","[","\n","      ",RowBox[{RowBox[{"Rasterize","[",RowBox[
+{"grafica",","," ",RowBox[{"ImageResolution"," ","\[Rule]"," ","600"}]}],"]"}],",","\n","      ","\"TIFF\"",",","\n","      ",RowBox[
+{"nombreArchivo"," ","<>"," ","\"_600dpi.tiff\""}]}],"\n","    ","]"}]}],";","\n","    ",RowBox[
+{"<|","\n","      ",RowBox[{RowBox[{"\"Entrada\""," ","\[Rule]"," ",RowBox[{"estrella","[","\"Entrada\"","]"}]}],",","\n","      ",RowBox[
+{"\"ID\""," ","\[Rule]"," ",RowBox[{"estrella","[","\"ID\"","]"}]}],",","\n","      ",RowBox[
+{"\"PDF\""," ","\[Rule]"," ","pdf"}],",","\n","      ",RowBox[{"\"TIFF\""," ","\[Rule]"," ","tiff"}]}],"\n","    ","|>"}]}]}],"\n","  ","]"}],","," ",RowBox[
+{"{",RowBox[{"estrella",","," ","stars"}],"}"}]}],"]"}]}],";"}]}]}],"Input",CellLabel -> "In[197]:= ",
+ExpressionUUID -> "899d9465-340c-44ac-b6fd-c718136128a9"],Cell[
+CellGroupData[{Cell[
+BoxData[
+RowBox[{RowBox[{"(*"," ",RowBox[{"Resumen"," ","de"," ","archivos"," ","generados"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"Dataset","[","resultados","]"}],"\n"}]}]],"Input",CellLabel -> "In[199]:= ",
+ExpressionUUID -> "b1e56893-6026-48da-881a-d8654097faaf"],Cell[
+BoxData[TagBox[TagBox[
+DynamicModuleBox[{Set[TypeSystem`NestedGrid`PackagePrivate`$state$$,Association["InitialData" -> {Association[
+"Entrada" -> "11 Cas","ID" -> "beta Cas (Caph)","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas_600dpi.tiff"]],Association[
+"Entrada" -> "54 Tau","ID" -> "gamma Tau (Prima Hyadum)","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau_600dpi.tiff"]],Association[
+"Entrada" -> "Pleiades","ID" -> "M45 / Melotte 22","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades_600dpi.tiff"]],Association[
+"Entrada" -> "Acrux","ID" -> "alpha Cru AB","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Acrux.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Acrux_600dpi.tiff"]],Association[
+"Entrada" -> "Rigel","ID" -> "beta Ori","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Rigel.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Rigel_600dpi.tiff"]],Association[
+"Entrada" -> "2 CMa","ID" -> "beta CMa (Mirzam)","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa_600dpi.tiff"]],Association[
+"Entrada" -> "6 Sco","ID" -> "pi Sco (Fang)","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco_600dpi.tiff"]],Association[
+"Entrada" -> "18 Psc","ID" -> "lambda Psc","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc_600dpi.tiff"]],Association[
+"Entrada" -> "Mirfak","ID" -> "alpha Per (33 Per)","PDF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak.pdf"],
+"TIFF" -> CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak_600dpi.tiff"]]},
+"AllowEmbedding" -> True,"InitialShape" -> TypeSystem`PackageScope`HeaderShape[Association[
+{All,"Entrada"} -> 1,{All,"ID"} -> 1,{All,"PDF"} -> 1,{All,"TIFF"} -> 1],TypeSystem`PackageScope`Limited[
+TypeSystem`PackageScope`ColumnShape[TypeSystem`PackageScope`Limited[TypeSystem`PackageScope`RowShape[
+Association["Entrada" -> TypeSystem`PackageScope`AtomShape[67.2`],"ID" -> TypeSystem`PackageScope`AtomShape[
+268.8`],"PDF" -> TypeSystem`PackageScope`AtomShape[60],"TIFF" -> TypeSystem`PackageScope`AtomShape[
+60]]],DirectedInfinity[1],4,{All}]],9,DirectedInfinity[1],{}]],"InitialType" -> TypeSystem`Vector[
+TypeSystem`Struct[{"Entrada","ID","PDF","TIFF"},{TypeSystem`Atom[String],TypeSystem`Atom[
+String],TypeSystem`Atom[CloudObject],TypeSystem`Atom[CloudObject]}],9],"Meta" -> Association[],
+"RowTarget" -> 20,"ColumnTarget" -> 10,"Shape" -> TypeSystem`PackageScope`HeaderShape[
+Association[{All,"Entrada"} -> 1,{All,"ID"} -> 1,{All,"PDF"} -> 1,{All,"TIFF"} -> 1],
+TypeSystem`PackageScope`Limited[TypeSystem`PackageScope`ColumnShape[TypeSystem`PackageScope`Limited[
+TypeSystem`PackageScope`RowShape[Association["Entrada" -> TypeSystem`PackageScope`AtomShape[
+67.2`],"ID" -> TypeSystem`PackageScope`AtomShape[268.8`],"PDF" -> TypeSystem`PackageScope`AtomShape[
+60],"TIFF" -> TypeSystem`PackageScope`AtomShape[60]]],DirectedInfinity[1],4,{All}]],
+9,DirectedInfinity[1],{}]],"Type" -> TypeSystem`Vector[TypeSystem`Struct[{"Entrada","ID","PDF","TIFF"},
+{TypeSystem`Atom[String],TypeSystem`Atom[String],TypeSystem`Atom[CloudObject],TypeSystem`Atom[
+CloudObject]}],9],"Path" -> {},"DisplayedRowCount" -> 9,"DisplayedColumnCount" -> 4,
+"DataRowCount" -> 9,"DataColumnCount" -> 4,"SortPaths" -> {},"SortDirections" -> {},
+"HiddenItemsMap" -> Null,"UpdateType" -> 1]],TypeSystem`NestedGrid`PackagePrivate`$outputID$$,Set[
+TypeSystem`NestedGrid`PackagePrivate`$path$$,{}],Set[TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+1],Set[TypeSystem`NestedGrid`PackagePrivate`$hPos$$,1],Set[TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+DynamicModule[{Set[TypeSystem`NestedGrid`PackagePrivate`renderedGrid,Deploy[Style[
+Grid[{{Item[Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["Entrada",Style["Entrada",
+FontColor -> RGBColor[0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],
+"LinkHand"],RuleDelayed[{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][
+{All,"Entrada"},1]]],Row[{Row[{Style["All",RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,
+0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+ImageSize -> {{1,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[
+0.9500473017990948`,0.9500473017990948`,0.9500473017990948`],Alignment -> {Left,Baseline}],Item[
+Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["ID",Style["ID",FontColor -> RGBColor[
+0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[
+{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"ID"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"ID",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+ImageSize -> {{1,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[
+0.9500473017990948`,0.9500473017990948`,0.9500473017990948`],Alignment -> {Left,Baseline}],Item[
+Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["PDF",Style["PDF",FontColor -> RGBColor[
+0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[
+{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"PDF"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"PDF",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+ImageSize -> {{1,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[
+0.9500473017990948`,0.9500473017990948`,0.9500473017990948`],Alignment -> {Left,Baseline}],Item[
+Pane[Tooltip[EventHandler[MouseAppearance[Mouseover["TIFF",Style["TIFF",FontColor -> RGBColor[
+0.2749633796890805`,0.536987306253161`,0.791992189065661`]]],"LinkHand"],RuleDelayed[
+{"MouseClicked",1},TypeSystem`NestedGrid`PackagePrivate`updateState[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{All,"TIFF"},1]]],Row[{Row[{Style[
+"All",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[
+{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"TIFF",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},
+BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],ImageSize -> {{1,Full},Automatic},
+ImageMargins -> {{5,3},{4,5}}],Background -> RGBColor[0.9500473017990948`,0.9500473017990948`,
+0.9500473017990948`],Alignment -> {Left,Baseline}]},{Item[Pane[Annotation[Tooltip[
+"11 Cas",Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,
+0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,0.6000839236379029`,
+0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["beta Cas (Caph)",Row[{Row[{Style[RawBoxes["1"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/11_Cas_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["1"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["54 Tau",Row[{Row[{Style[RawBoxes["2"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["gamma Tau (Prima Hyadum)",Row[{Row[{Style[RawBoxes["2"],
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[
+" \:203a ",RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style[
+"ID",RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["2"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/54_Tau_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["2"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["Pleiades",Row[{Row[{Style[RawBoxes["3"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["M45 / Melotte 22",Row[{Row[{Style[RawBoxes["3"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["3"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Pleiades_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["3"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["Acrux",Row[{Row[{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["alpha Cru AB",Row[{Row[{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["ID",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Acrux.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/Acrux.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Acrux.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Acrux_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/Acrux_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Acrux_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["4"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["Rigel",Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["beta Ori",Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["ID",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Rigel.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/Rigel.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Rigel.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Rigel_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/Rigel_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Rigel_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["5"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["2 CMa",Row[{Row[{Style[RawBoxes["6"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["beta CMa (Mirzam)",Row[{Row[{Style[RawBoxes["6"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["6"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/2_CMa_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["6"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{6,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["6 Sco",Row[{Row[{Style[RawBoxes["7"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["pi Sco (Fang)",Row[{Row[{Style[RawBoxes["7"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["ID",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["7"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/6_Sco_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["7"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{7,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["18 Psc",Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["lambda Psc",Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["ID",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/18_Psc_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["8"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{8,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]},{Item[
+Pane[Annotation[Tooltip["Mirfak",Row[{Row[{Style[RawBoxes["9"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["Entrada",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["Entrada"]},"Item",False],
+"Mouse"],ImageSize -> {{67.2`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip["alpha Per (33 Per)",Row[{Row[{Style[RawBoxes["9"],RGBColor[
+0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",
+RGBColor[0.6500106814504029`,0.6500106814504029`,0.6500106814504029`]],Style["ID",
+RGBColor[0.6000839236379029`,0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["ID"]},"Item",False],"Mouse"],
+ImageSize -> {{268.8`,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak.pdf\"","https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak.pdf"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak.pdf"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["9"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["PDF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["PDF"]},"Item",False],"Mouse"],
+ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}],Item[
+Pane[Annotation[Tooltip[RawBoxes[StyleBox[InterpretationBox[RowBox[{"CloudObject","[",TemplateBox[
+{"\"https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak_600dpi.tiff\"","https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak_600dpi.tiff"},
+"HyperlinkURL"],"]"}],CloudObject["https://www.wolframcloud.com/obj/edwinperez/plots/Mirfak_600dpi.tiff"],
+SelectWithContents -> True],FontFamily -> Dynamic[CurrentValue[{"StyleHints","CodeFont"}]],
+ShowStringCharacters -> True]],Row[{Row[{Style[RawBoxes["9"],RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}],Row[{Style[" \:203a ",RGBColor[0.6500106814504029`,
+0.6500106814504029`,0.6500106814504029`]],Style["TIFF",RGBColor[0.6000839236379029`,
+0.6000839236379029`,0.6000839236379029`]]}]},BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 10.5`}]],
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{9,Key["TIFF"]},"Item",False],
+"Mouse"],ImageSize -> {{60,Full},Automatic},ImageMargins -> {{5,3},{4,5}}],ItemSize -> {Full,Automatic}]}},
+BaseStyle -> {ContextMenu -> Dynamic[CompoundExpression[TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger,
+Which[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`$lastOutputID,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]],{},SameQ[TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger,
+TypeSystem`NestedGrid`PackagePrivate`$lastContextMenuTrigger],TypeSystem`NestedGrid`PackagePrivate`$lastContextMenu,
+True,CompoundExpression[Set[TypeSystem`NestedGrid`PackagePrivate`$lastContextMenuTrigger,
+TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger],Set[TypeSystem`NestedGrid`PackagePrivate`$lastContextMenu,
+Block[{Set[TypeSystem`NestedGrid`PackagePrivate`$globalScrollPos,{TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$}]},
+With[{Set[TypeSystem`NestedGrid`PackagePrivate`lastPath$,TypeSystem`NestedGrid`PackagePrivate`$lastPath],Set[
+TypeSystem`NestedGrid`PackagePrivate`lastPathType$,TypeSystem`NestedGrid`PackagePrivate`$lastPathType],Set[
+TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$,TypeSystem`NestedGrid`PackagePrivate`$lastPathIsLeafHeader],Set[
+TypeSystem`NestedGrid`PackagePrivate`headerHidden$,And[MatchQ[TypeSystem`NestedGrid`PackagePrivate`$lastPathType,
+Alternatives["RowHeader","ColumnHeader"]],TypeSystem`NestedGrid`PackagePrivate`headerHiddenQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`allHidden$,TypeSystem`NestedGrid`PackagePrivate`allHiddenQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$]],Set[
+TypeSystem`NestedGrid`PackagePrivate`anyHidden$,TypeSystem`NestedGrid`PackagePrivate`anyHiddenQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$]],Set[
+TypeSystem`NestedGrid`PackagePrivate`sortDirection$,TypeSystem`NestedGrid`PackagePrivate`columnSortDirection[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$[
+"SortPaths"],TypeSystem`NestedGrid`PackagePrivate`$state$$["SortDirections"]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`haveData$,Not[FailureQ[TypeSystem`NestedGrid`PackagePrivate`datasetInitialData[
+TypeSystem`NestedGrid`PackagePrivate`$state$$]]]],Set[TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$,
+Not[FreeQ[TypeSystem`NestedGrid`PackagePrivate`$lastPath,Keys]]]},Join[{If[Or[Not[
+TypeSystem`NestedGrid`PackagePrivate`haveData$],Not[TypeSystem`NestedGrid`PackagePrivate`anyHidden$],
+TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$],Nothing,MenuItem[StringJoin["Show ",
+Which[Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"Item"],"",Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,
+"RowHeader"],"Row",Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"ColumnHeader"],
+"Column",True,""]],KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateHiddenItems[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][
+TypeSystem`NestedGrid`PackagePrivate`lastPath$,"remove"]],MenuEvaluator -> Automatic]],If[
+Or[Not[TypeSystem`NestedGrid`PackagePrivate`haveData$],TypeSystem`NestedGrid`PackagePrivate`pathEmptyQ[
+TypeSystem`NestedGrid`PackagePrivate`$lastPath,TypeSystem`NestedGrid`PackagePrivate`$state$$],
+TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$,And[TypeSystem`NestedGrid`PackagePrivate`allHidden$,
+TypeSystem`NestedGrid`PackagePrivate`headerHidden$]],Nothing,MenuItem[StringJoin[
+"Hide ",Which[Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"Item"],"",
+Equal[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"RowHeader"],"Row",Equal[
+TypeSystem`NestedGrid`PackagePrivate`lastPathType$,"ColumnHeader"],"Column",True,
+""]],KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateHiddenItems[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][TypeSystem`NestedGrid`PackagePrivate`lastPath$,
+"add"]],MenuEvaluator -> Automatic]],Delimiter},If[And[TypeSystem`NestedGrid`PackagePrivate`haveData$,
+MatchQ[TypeSystem`NestedGrid`PackagePrivate`lastPathType$,Alternatives["ColumnHeader",
+"KeyDummy"]],TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$,Not[TypeSystem`NestedGrid`PackagePrivate`allHidden$]],
+{If[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`sortDirection$,"Ascending"],MenuItem[
+"Sort",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateSort[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+TypeSystem`NestedGrid`PackagePrivate`lastPath$,"Ascending"]],MenuEvaluator -> Automatic],
+Nothing],If[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`sortDirection$,"Descending"],
+MenuItem["Reverse Sort",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateSort[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][TypeSystem`NestedGrid`PackagePrivate`lastPath$,
+"Descending"]],MenuEvaluator -> Automatic],Nothing],If[UnsameQ[TypeSystem`NestedGrid`PackagePrivate`sortDirection$,
+None],MenuItem["Unsort",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`updateSort[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][TypeSystem`NestedGrid`PackagePrivate`lastPath$,
+None]],MenuEvaluator -> Automatic],Nothing],Delimiter},{}],{MenuItem["Copy Position to Clipboard",
+KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[TypeSystem`NestedGrid`PackagePrivate`copyClip]],
+MenuEvaluator -> Automatic],If[TypeSystem`NestedGrid`PackagePrivate`haveData$,MenuItem[
+"Copy Data to Clipboard",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`copyClip]],
+MenuEvaluator -> Automatic],Nothing],Delimiter,MenuItem["Paste Position in New Cell",
+KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[TypeSystem`NestedGrid`PackagePrivate`cellPaste]],
+MenuEvaluator -> Automatic],If[TypeSystem`NestedGrid`PackagePrivate`haveData$,MenuItem[
+"Paste Data in New Cell",KernelExecute[TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`cellPaste]],
+MenuEvaluator -> Automatic],Nothing]}]]]]]]]],FontFamily -> "Source Sans Pro",FontSize -> 14,FontWeight -> Plain},
+Dividers -> All,FrameStyle -> RGBColor[0.749003690406716`,0.749003690406716`,0.749003690406716`],
+Spacings -> {0,0},Alignment -> Left,BaseStyle -> {FontFamily -> "Source Sans Pro",FontSize -> 14,FontWeight -> Plain}],
+LineBreakWithin -> False,ContextMenu -> {},NumberMarks -> False,ShowAutoStyles -> False]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`initialQ,True]},Dynamic[TypeSystem`NestedGrid`PackagePrivate`setupViewPath[
+TypeSystem`NestedGrid`PackagePrivate`$path$$,CompoundExpression[If[Not[TypeSystem`NestedGrid`PackagePrivate`initialQ],
+Module[{Set[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$,$Failed],Set[TypeSystem`NestedGrid`PackagePrivate`tmpData$,
+TypeSystem`NestedGrid`PackagePrivate`datasetData[TypeSystem`NestedGrid`PackagePrivate`$state$$]]},
+CompoundExpression[Set[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$,If[FailureQ[
+TypeSystem`NestedGrid`PackagePrivate`tmpData$],TypeSystem`NestedGrid`PackagePrivate`renderedGrid,
+TypeSystem`NestedGrid`PackagePrivate`renderGrid[TypeSystem`NestedGrid`PackagePrivate`$state$$,
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+TypeSystem`NestedGrid`PackagePrivate`tmpData$]]],If[Not[FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]],
+Set[TypeSystem`NestedGrid`PackagePrivate`renderedGrid,TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]],
+Null]]],Set[TypeSystem`NestedGrid`PackagePrivate`initialQ,False],TypeSystem`NestedGrid`PackagePrivate`$vPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$hPos$$,If[FailureQ[TypeSystem`NestedGrid`PackagePrivate`renderedGrid],
+TypeSystem`SparseGrid[TypeSystem`H["(data no longer present)"]],TypeSystem`NestedGrid`PackagePrivate`renderedGrid]]],
+RuleDelayed[TrackedSymbols,{TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$}]],
+RuleDelayed[DynamicModuleValues,{}]]],Set[TypeSystem`NestedGrid`PackagePrivate`$topBar$$,
+Dynamic[TypeSystem`NestedGrid`PackagePrivate`makeFramedBar[TypeSystem`PackageScope`SubViewPathbar[
+TypeSystem`NestedGrid`PackagePrivate`$path$$,TypeSystem`NestedGrid`PackagePrivate`updateState[
+TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$path$$,
+TypeSystem`NestedGrid`PackagePrivate`$vPos$$,TypeSystem`NestedGrid`PackagePrivate`$hPos$$,
+TypeSystem`NestedGrid`PackagePrivate`$grid$$,TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]]],RuleDelayed[TrackedSymbols,{TypeSystem`NestedGrid`PackagePrivate`$path$$}]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$,Dynamic[Replace[Replace[TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$,
+{TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][Null,Blank[]] -> "",RuleDelayed[
+TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][Pattern[TypeSystem`NestedGrid`PackagePrivate`path$,
+Blank[]],Pattern[TypeSystem`NestedGrid`PackagePrivate`pathType$,Blank[]],Pattern[
+TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$,Blank[]]],CompoundExpression[Increment[
+TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger],Set[TypeSystem`NestedGrid`PackagePrivate`$lastPath,
+TypeSystem`NestedGrid`PackagePrivate`path$],Set[TypeSystem`NestedGrid`PackagePrivate`$lastPathType,
+TypeSystem`NestedGrid`PackagePrivate`pathType$],Set[TypeSystem`NestedGrid`PackagePrivate`$lastPathIsLeafHeader,
+TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$],Set[TypeSystem`NestedGrid`PackagePrivate`$lastOutputID,
+TypeSystem`NestedGrid`PackagePrivate`localHold[TypeSystem`NestedGrid`PackagePrivate`$outputID$$]],
+TypeSystem`NestedGrid`PackagePrivate`makePathTrail[TypeSystem`NestedGrid`PackagePrivate`path$,
+TypeSystem`NestedGrid`PackagePrivate`makePathElements]]],RuleDelayed[Null,Spacer[
+10]],RuleDelayed[Blank[],Spacer[10]]}],RuleDelayed[Pattern[TypeSystem`NestedGrid`PackagePrivate`bar,
+Except[Alternatives[Blank[Spacer],""]]],TypeSystem`NestedGrid`PackagePrivate`makeFramedPathbar[
+TypeSystem`NestedGrid`PackagePrivate`bar]]],RuleDelayed[TrackedSymbols,{TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$}]]],Set[
+TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$,TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+"d84e211b-0a1f-4807-9794-5405081edebf"][{5,Key["PDF"]},"Item",False]]},DynamicWrapperBox[
+DynamicBox[ToBoxes[Dataset`DatasetContent[2,"Path" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$path$$],
+"Grid" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$grid$$],"State" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$state$$],
+"VPos" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$vPos$$],"HPos" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$hPos$$],
+"TopBar" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$topBar$$],"BottomBar" -> Hold[
+TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$],"OutputID" -> Hold[TypeSystem`NestedGrid`PackagePrivate`localHold[
+TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]],StandardForm],RuleDelayed[TrackedSymbols,
+{TypeSystem`NestedGrid`PackagePrivate`$state$$,TypeSystem`NestedGrid`PackagePrivate`$grid$$}]],
+Set[TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$,MouseAnnotation[]]],RuleDelayed[
+Initialization,Set[TypeSystem`NestedGrid`PackagePrivate`$outputID$$,CreateUUID[]]],
+RuleDelayed[DynamicModuleValues,{}],BaseStyle -> {LineBreakWithin -> False,LightDarkAutoColorRules -> Association[
+"MarkedColors" -> True]},RuleDelayed[UnsavedVariables,{TypeSystem`NestedGrid`PackagePrivate`$outputID$$}],
+ExpressionUUID -> "0b9764a3-f9d7-4f56-b1c7-d76e98687ae4"],Deploy,DefaultBaseStyle -> "Deploy"],
+Dataset`InterpretDataset[1],Selectable -> False,Editable -> False,SelectWithContents -> True],
+StandardForm],"Output",CellLabel -> "Out[199]= ",ExpressionUUID -> "fbf34f1e-573b-4802-b4b0-f3f782b09143"]},
+Open],ExpressionUUID -> "df7a3a33-ed2e-4ee0-8d74-8b87f6bcafd5"]},StyleDefinitions -> "Default.nb",
+FrontEndVersion -> "15. for Wolfram Cloud 1.77.1 (August 27, 2026)"]
