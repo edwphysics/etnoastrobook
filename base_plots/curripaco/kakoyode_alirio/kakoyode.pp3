@@ -1,13 +1,13 @@
 filename output kakoyode.tex
 switch pdf_output on
 
-set center_rectascension 5.58
-set center_declination -4.78
+set center_rectascension 5.62
+set center_declination 1.5
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 0.85
+set grad_per_cm 1.3
 
 set faintest_star_magnitude 10.0
 
@@ -44,4 +44,4 @@ switch milky_way off
 #set faintest_star_with_label_magnitude 0.0
 
 objects_and_labels
-text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Cacuyúde" at 5.95 0.2456 color 0 0 0 ;
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Cacuyúde" at 6.1324 9 color 0 0 0 ;
