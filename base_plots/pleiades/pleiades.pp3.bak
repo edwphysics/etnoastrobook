@@ -2,7 +2,7 @@ filename output pleiades.tex
 switch pdf_output on
 
 set center_rectascension 3.82
-set center_declination 27.8
+set center_declination 24.2
 set box_width 15
 set box_height 15
 
@@ -38,10 +38,10 @@ switch nebulae off
 
 objects_and_labels
 
-text "$#3{\\rm h}#4{\\rm m}$" at 4.5000 15.9000 along declination
+text "$#3{\\rm h}#4{\\rm m}$" at 4.5000 15.7000 along declination
     tics rectascension 0.5 towards S ;
 
-text "$#5^\\circ$" at 4.7336 28.0000 along declination
+text "$#5^\\circ$" at 4.7319 27.8000 along declination
     tics declination 5 towards W ;
 
-text "\\LARGE\\bfseries Pleiades" at 4.7336 40.1000 color 0 0 0 ;
+text "\\LARGE\\bfseries Pleiades" at 4.0 19.5 color 0 0 0 ;
