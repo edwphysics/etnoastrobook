@@ -1,13 +1,13 @@
 filename output orion.tex
 switch pdf_output on
 
-set center_rectascension 5.16
+set center_rectascension 5.3
 set center_declination 0.33
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 2.0
+set grad_per_cm 1.8
 
 set faintest_star_magnitude 10.0
 
@@ -38,10 +38,10 @@ switch nebulae off
 
 objects_and_labels
 
-text "$#3{\\rm h}#4{\\rm m}$" at 6.0000 -13.0700 along declination
+text "$#3{\\rm h}#4{\\rm m}$" at 6.0000 -11.7300 along declination
     tics rectascension 0.5 towards S ;
 
-text "$#5^\\circ$" at 6.0533 0.3300 along declination
+text "$#5^\\circ$" at 6.1040 0.3300 along declination
     tics declination 5 towards W ;
 
-text "\\LARGE\\bfseries Orion" at 6.0533 13.7300 color 0 0 0 ;
+text "\\LARGE\\bfseries Orion" at 6.1040 12.3900 color 0 0 0 ;
