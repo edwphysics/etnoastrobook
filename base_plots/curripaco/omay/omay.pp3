@@ -2,12 +2,12 @@ filename output omay.tex
 switch pdf_output on
 
 set center_rectascension 12.55
-set center_declination -60.3
+set center_declination -59.7
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 0.6
+set grad_per_cm 0.65
 
 set faintest_star_magnitude 10.0
 
@@ -44,4 +44,5 @@ switch milky_way off
 #set faintest_star_with_label_magnitude 0.0
 
 objects_and_labels
-text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Omay" at 12.9940 -57.0000 color 0 0 0 ;
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries - Omay (Emilio G.)" at 13.05 -55.5000 color 0 0 0 ;
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries - Curuza (Alirio T.)" at 13.05 -56.4000 color 0 0 0 ;
