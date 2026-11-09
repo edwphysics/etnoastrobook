@@ -1,13 +1,13 @@
 filename output jiadavi.tex
 switch pdf_output on
 
-set center_rectascension 5.5
-set center_declination -30
+set center_rectascension 6
+set center_declination -32
 set box_width 15
 set box_height 15
 
 # Scale in degrees per cm; 2.0 gives a wider field than 1.33
-set grad_per_cm 3.7
+set grad_per_cm 3.3
 
 #set faintest_star_magnitude 10.0
 
@@ -18,7 +18,7 @@ color stars 0 0 0
 color text_labels 0 0 0
 
 # Constellation lines and boundaries
-#filename constellation_lines lines.dat
+filename constellation_lines lines.dat
 switch constellation_lines on
 color constellation_lines 0 0 0
 switch boundaries off
@@ -38,10 +38,10 @@ switch nebulae off
 
 objects_and_labels
 
-text "$#3{\\rm h}#4{\\rm m}$" at 7.0000 -49.7900 along declination
+text "$#3{\\rm h}#4{\\rm m}$" at 7.5000 -54.2500 along declination
     tics rectascension 0.5 towards S ;
 
-text "$#5^\\circ$" at 7.3235 -25.0000 along declination
+text "$#5^\\circ$" at 7.5667 -35.0000 along declination
     tics declination 5 towards W ;
 
-text "\\LARGE\\bfseries Orion" at 7.3235 -0.2100 color 0 0 0 ;
+#text "\\LARGE\\bfseries Title" at 7.5667 -15.7500 color 0 0 0 ;
