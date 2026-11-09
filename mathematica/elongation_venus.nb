@@ -1,0 +1,749 @@
+Notebook[{Cell[
+CellGroupData[{Cell[
+BoxData[{RowBox[{RowBox[{"(*"," ",RowBox[{"Interpolaciones"," ","lineales"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"elongacionInterpolada"," ","="," ",RowBox[{"Interpolation","[","\n","   ",RowBox[
+{"datosSeparacion",",","\n","   ",RowBox[{"InterpolationOrder"," ","\[Rule]"," ","1"}]}],"\n","]"}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"signoInterpolado"," ","="," ",RowBox[{"Interpolation","[","\n","   ",RowBox[
+{RowBox[{"datosFirmados","[",RowBox[{"[",RowBox[{"All",","," ",RowBox[{"{",RowBox[
+{"1",","," ","3"}],"}"}]}],"]"}],"]"}],",","\n","   ",RowBox[{"InterpolationOrder"," ","\[Rule]"," ","1"}]}],"\n","]"}]}],";"}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"(*"," ",RowBox[{"Cruces"," ","de"," ","la"," ","elongaci\[OAcute]n"," ","con"," ","10"," ","grados"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"crucesNivel"," ","="," ",RowBox[{"Table","[","\n","   ",RowBox[{RowBox[
+{"With","[","\n","    ",RowBox[{RowBox[{"{","\n","     ",RowBox[{RowBox[{"x1"," ","="," ",RowBox[
+{"datosSeparacion","[",RowBox[{"[",RowBox[{"i",","," ","1"}],"]"}],"]"}]}],",","\n","     ",RowBox[
+{"x2"," ","="," ",RowBox[{"datosSeparacion","[",RowBox[{"[",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ","1"}],"]"}],"]"}]}],",","\n","     ",RowBox[
+{"y1"," ","="," ",RowBox[{"datosSeparacion","[",RowBox[{"[",RowBox[{"i",","," ","2"}],"]"}],"]"}]}],",","\n","     ",RowBox[
+{"y2"," ","="," ",RowBox[{"datosSeparacion","[",RowBox[{"[",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ","2"}],"]"}],"]"}]}]}],"\n","    ","}"}],",","\n","    ",RowBox[
+{"If","[","\n","     ",RowBox[{RowBox[{RowBox[{RowBox[{"(",RowBox[{"y1"," ","-"," ","10"}],")"}]," ",RowBox[
+{"(",RowBox[{"y2"," ","-"," ","10"}],")"}]}]," ","<"," ","0"}],",","\n","     ",RowBox[
+{"x1"," ","+"," ",RowBox[{RowBox[{"(",RowBox[{"10"," ","-"," ","y1"}],")"}]," ",RowBox[
+{RowBox[{"(",RowBox[{"x2"," ","-"," ","x1"}],")"}],"/",RowBox[{"(",RowBox[{"y2"," ","-"," ","y1"}],")"}]}]}]}],",","\n","     ","Nothing"}],"\n","    ","]"}]}],"\n","   ","]"}],",","\n","   ",RowBox[
+{"{",RowBox[{"i",","," ","1",","," ",RowBox[{RowBox[{"Length","[","datosSeparacion","]"}]," ","-"," ","1"}]}],"}"}]}],"\n","]"}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"(*"," ",RowBox[{"Cruces"," ","de"," ","la"," ","longitud"," ","relativa"," ","por"," ","cero"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"crucesSigno"," ","="," ",RowBox[{"Table","[","\n","   ",RowBox[{RowBox[
+{"With","[","\n","    ",RowBox[{RowBox[{"{","\n","     ",RowBox[{RowBox[{"x1"," ","="," ",RowBox[
+{"datosFirmados","[",RowBox[{"[",RowBox[{"i",","," ","1"}],"]"}],"]"}]}],",","\n","     ",RowBox[
+{"x2"," ","="," ",RowBox[{"datosFirmados","[",RowBox[{"[",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ","1"}],"]"}],"]"}]}],",","\n","     ",RowBox[
+{"s1"," ","="," ",RowBox[{"datosFirmados","[",RowBox[{"[",RowBox[{"i",","," ","3"}],"]"}],"]"}]}],",","\n","     ",RowBox[
+{"s2"," ","="," ",RowBox[{"datosFirmados","[",RowBox[{"[",RowBox[{RowBox[{"i"," ","+"," ","1"}],","," ","3"}],"]"}],"]"}]}]}],"\n","    ","}"}],",","\n","    ",RowBox[
+{"If","[","\n","     ",RowBox[{RowBox[{RowBox[{"s1"," ","s2"}]," ","<"," ","0"}],",","\n","     ",RowBox[
+{"x1"," ","-"," ",RowBox[{"s1"," ",RowBox[{RowBox[{"(",RowBox[{"x2"," ","-"," ","x1"}],")"}],"/",RowBox[
+{"(",RowBox[{"s2"," ","-"," ","s1"}],")"}]}]}]}],",","\n","     ","Nothing"}],"\n","    ","]"}]}],"\n","   ","]"}],",","\n","   ",RowBox[
+{"{",RowBox[{"i",","," ","1",","," ",RowBox[{RowBox[{"Length","[","datosFirmados","]"}]," ","-"," ","1"}]}],"}"}]}],"\n","]"}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"(*"," ",RowBox[{"Conjunto"," ","de"," ","fechas"," ","refinado"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"xsRefinados"," ","="," ",RowBox[{"Sort"," ","@"," ",RowBox[{"DeleteDuplicates"," ","@"," ",RowBox[
+{"Join","[","\n","   ",RowBox[{RowBox[{"datosFirmados","[",RowBox[{"[",RowBox[{"All",","," ","1"}],"]"}],"]"}],",","\n","   ","crucesNivel",",","\n","   ","crucesSigno"}],"\n","]"}]}]}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"(*"," ",RowBox[{"Construcci\[OAcute]n"," ","de"," ","los"," ","segmentos"," ","interpolados"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"tramos"," ","="," ",RowBox[{"Table","[","\n","   ",RowBox[{RowBox[{"With","[","\n","    ",RowBox[
+{RowBox[{"{","\n","     ",RowBox[{RowBox[{"x1"," ","="," ",RowBox[{"xsRefinados","[",RowBox[
+{"[","i","]"}],"]"}]}],",","\n","     ",RowBox[{"x2"," ","="," ",RowBox[{"xsRefinados","[",RowBox[
+{"[",RowBox[{"i"," ","+"," ","1"}],"]"}],"]"}]}],",","\n","     ",RowBox[{"xm"," ","="," ",RowBox[
+{"Mean","[",RowBox[{"xsRefinados","[",RowBox[{"[",RowBox[{"{",RowBox[{"i",","," ",RowBox[
+{"i"," ","+"," ","1"}]}],"}"}],"]"}],"]"}],"]"}]}]}],"\n","    ","}"}],",","\n","    ",RowBox[
+{"{","\n","     ",RowBox[{RowBox[{"{",RowBox[{"x1",","," ",RowBox[{"N","[",RowBox[
+{"elongacionInterpolada","[","x1","]"}],"]"}]}],"}"}],",","\n","     ",RowBox[{"{",RowBox[
+{"x2",","," ",RowBox[{"N","[",RowBox[{"elongacionInterpolada","[","x2","]"}],"]"}]}],"}"}],",","\n","     ",RowBox[
+{"N","[",RowBox[{"elongacionInterpolada","[","xm","]"}],"]"}],",","\n","     ",RowBox[
+{"N","[",RowBox[{"signoInterpolado","[","xm","]"}],"]"}]}],"\n","    ","}"}]}],"\n","   ","]"}],",","\n","   ",RowBox[
+{"{",RowBox[{"i",","," ","1",","," ",RowBox[{RowBox[{"Length","[","xsRefinados","]"}]," ","-"," ","1"}]}],"}"}]}],"\n","]"}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{"{",RowBox[{RowBox[{"Length","[","datosFirmados","]"}],","," ",RowBox[
+{"Length","[","crucesNivel","]"}],",","\n"," ",RowBox[{"Length","[","crucesSigno","]"}],","," ",RowBox[
+{"Length","[","tramos","]"}]}],"}"}]}],"Input",CellLabel -> "In[178]:= ",ExpressionUUID -> "22654cbf-0bea-411e-bd0c-40f105446de6"],Cell[
+BoxData[
+RowBox[{"{",RowBox[{"601",",","4",",","3",",","607"}],"}"}],StandardForm],"Output",
+CellLabel -> "Out[184]= ",ExpressionUUID -> "c1e6e23f-7716-4b31-9547-82659984a1dd"]},
+Open],ExpressionUUID -> "4af569c4-941d-43d0-9fde-37c74e8c93b3"],Cell[
+CellGroupData[
+{Cell[
+BoxData[{RowBox[{RowBox[{"(*"," ",RowBox[{"Agrupar"," ","segmentos"," ","consecutivos"," ","seg\[UAcute]n"," ","visibilidad"," ","y"," ","signo"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"grupos"," ","="," ",RowBox[{"SplitBy","[","\n","   ",RowBox[{"tramos",",","\n","   ",RowBox[
+{RowBox[{"{","\n","     ",RowBox[{RowBox[{"Boole","[",RowBox[{RowBox[{"#","[",RowBox[
+{"[","3","]"}],"]"}]," ","\[GreaterEqual]"," ","10"}],"]"}],",","\n","     ",RowBox[
+{"Sign","[",RowBox[{"#","[",RowBox[{"[","4","]"}],"]"}],"]"}]}],"\n","   ","}"}]," ","&"}]}],"\n","]"}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"(*"," ",RowBox[{"Conservar"," ","\[UAcute]nicamente"," ","las"," ","regiones"," ","sobre"," ","10"," ","grados"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"intervalosVisibles"," ","="," ",RowBox[{"Select","[","\n","   ",RowBox[
+{"grupos",",","\n","   ",RowBox[{RowBox[{RowBox[{RowBox[{"First","[","#","]"}],"[",RowBox[
+{"[","3","]"}],"]"}]," ","\[GreaterEqual]"," ","10"}]," ","&"}]}],"\n","]"}]}],";"}]}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"(*"," ",RowBox[{"Construir"," ","pol\[IAcute]gonos"," ","de"," ","sombreado"}]," ","*)"}],"\n",RowBox[
+{RowBox[{"poligonos"," ","="," ",RowBox[{RowBox[{"Function","[",RowBox[{"region",",","\n","   ",RowBox[
+{"Module","[",RowBox[{RowBox[{"{",RowBox[{"curva",","," ","base"}],"}"}],",","\n","    ",RowBox[
+{RowBox[{"curva"," ","="," ",RowBox[{"Join","[","\n","      ",RowBox[{RowBox[{"{",RowBox[
+{RowBox[{"First","[","region","]"}],"[",RowBox[{"[","1","]"}],"]"}],"}"}],",","\n","      ",RowBox[
+{RowBox[{"(",RowBox[{RowBox[{"#","[",RowBox[{"[","2","]"}],"]"}]," ","&"}],")"}]," ","/@"," ","region"}]}],"\n","    ","]"}]}],";","\n","\n","    ",RowBox[
+{"base"," ","="," ",RowBox[{"Reverse","[","\n","      ",RowBox[{RowBox[{"(",RowBox[
+{RowBox[{"{",RowBox[{RowBox[{"#","[",RowBox[{"[","1","]"}],"]"}],","," ","10"}],"}"}]," ","&"}],")"}]," ","/@"," ","curva"}],"\n","    ","]"}]}],";","\n","\n","    ",RowBox[
+{"Polygon","[",RowBox[{"Join","[",RowBox[{"curva",","," ","base"}],"]"}],"]"}]}]}],"\n","   ","]"}]}],"\n","]"}]," ","/@"," ","intervalosVisibles"}]}],";"}]}]}],
+"Input",ExpressionUUID -> "4bd6c55e-368a-48dd-a645-7c197e85a543"],Cell[
+BoxData[RowBox[
+{"{",RowBox[{"2",",","2",",","2"}],"}"}],StandardForm],"Output",CellLabel -> "Out[173]= ",
+ExpressionUUID -> "25ab6471-656a-47d2-8ae5-bbc78da31fc7"]},Open],ExpressionUUID -> "5ae1b578-51b7-4de7-af6b-3bd82183e5d0"],Cell[
+CellGroupData[
+{Cell[
+BoxData[{RowBox[{RowBox[{"graficaEventos"," ","="," ",RowBox[{"Graphics","[","\n"," ",RowBox[
+{RowBox[{"{","\n","  ",RowBox[{"(*"," ",RowBox[{RowBox[{"Regiones"," ",RowBox[{"sombreadas",":"," ",RowBox[
+{"gris"," ","claro"}]}]}],","," ",RowBox[{"sin"," ","borde"}]}]," ","*)"}],"\n","  ",RowBox[
+{RowBox[{"Map","[","\n","   ",RowBox[{RowBox[{RowBox[{"{","\n","    ",RowBox[{RowBox[
+{"Directive","[","\n","     ",RowBox[{RowBox[{"GrayLevel","[","0.92","]"}],",","\n","     ",RowBox[
+{"EdgeForm","[","None","]"}]}],"\n","    ","]"}],",","\n","    ","#"}]," ","\n","   ","}"}]," ","&"}],",","\n","   ","poligonos"}],"\n","  ","]"}],",","\n","\n","  ",RowBox[
+{"(*"," ",RowBox[{"Curva"," ","de"," ","elongaci\[OAcute]n"}]," ","*)"}],"\n","  ",RowBox[
+{"Map","[","\n","   ",RowBox[{RowBox[{RowBox[{"If","[","\n","     ",RowBox[{RowBox[
+{RowBox[{"#","[",RowBox[{"[","3","]"}],"]"}]," ","\[GreaterEqual]"," ","10"}],",","\n","     ",RowBox[
+{"{","\n","      ",RowBox[{RowBox[{"Directive","[",RowBox[{"Black",","," ",RowBox[
+{"AbsoluteThickness","[","1.8","]"}]}],"]"}],",","\n","      ",RowBox[{"Line","[",RowBox[
+{"#","[",RowBox[{"[",RowBox[{"1"," ",";;"," ","2"}],"]"}],"]"}],"]"}]}],"\n","     ","}"}],",","\n","     ",RowBox[
+{"{","\n","      ",RowBox[{RowBox[{"Directive","[","\n","       ",RowBox[{"Black",",","\n","       ",RowBox[
+{"AbsoluteThickness","[","1.8","]"}],",","\n","       ","Dashed"}],"\n","      ","]"}],",","\n","      ",RowBox[
+{"Line","[",RowBox[{"#","[",RowBox[{"[",RowBox[{"1"," ",";;"," ","2"}],"]"}],"]"}],"]"}]}],"\n","     ","}"}]}],"\n","   ","]"}]," ","&"}],",","\n","   ","tramos"}],"\n","  ","]"}],",","\n","\n","  ",RowBox[
+{"(*"," ",RowBox[{"L\[IAcute]nea"," ","horizontal"," ","de"," ","10"," ","grados"}]," ","*)"}],"\n","  ",RowBox[
+{"{","\n","   ",RowBox[{RowBox[{"Directive","[",RowBox[{"Black",","," ","Dashed"}],"]"}],",","\n","   ",RowBox[
+{"Line","[",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{"0",","," ","10"}],"}"}],","," ",RowBox[
+{"{",RowBox[{"numeroDias",","," ","10"}],"}"}]}],"}"}],"]"}]}],"\n","  ","}"}]}],"\n"," ","}"}],",","\n","\n"," ",RowBox[
+{"Frame"," ","\[Rule]"," ","True"}],",","\n"," ",RowBox[{"Axes"," ","\[Rule]"," ","False"}],",","\n","\n"," ",RowBox[
+{"PlotRange"," ","\[Rule]"," ",RowBox[{"{",RowBox[{RowBox[{"{",RowBox[{"0",","," ","numeroDias"}],"}"}],","," ",RowBox[
+{"{",RowBox[{"0",","," ","50"}],"}"}]}],"}"}]}],",","\n"," ",RowBox[{"ImageSize"," ","\[Rule]"," ","700"}],",","\n"," ",RowBox[
+{"AspectRatio"," ","\[Rule]"," ","0.62"}],",","\n","\n"," ",RowBox[{"FrameLabel"," ","\[Rule]"," ",RowBox[
+{"{","\n","   ",RowBox[{RowBox[{"Style","[",RowBox[{"\"Tiempo (dias)\"",","," ","14",","," ",RowBox[
+{"FontFamily"," ","\[Rule]"," ","\"Times\""}]}],"]"}],",","\n","   ",RowBox[{"Style","[",RowBox[
+{"\"Elongacion angular (grados)\"",","," ","14",","," ",RowBox[{"FontFamily"," ","\[Rule]"," ","\"Times\""}]}],"]"}]}],"\n"," ","}"}]}],",","\n","\n"," ",RowBox[
+{"FrameStyle"," ","\[Rule]"," ",RowBox[{"Directive","[",RowBox[{"Black",","," ","12"}],"]"}]}],",","\n","\n"," ",RowBox[
+{"FrameTicks"," ","\[Rule]"," ",RowBox[{"{","\n","   ",RowBox[{RowBox[{"{",RowBox[
+{RowBox[{"Range","[",RowBox[{"0",","," ","50",","," ","10"}],"]"}],","," ","None"}],"}"}],",","\n","   ",RowBox[
+{"{",RowBox[{RowBox[{"Range","[",RowBox[{"0",","," ","numeroDias",","," ","50"}],"]"}],","," ","None"}],"}"}]}],"\n"," ","}"}]}],",","\n","\n"," ",RowBox[
+{"GridLines"," ","\[Rule]"," ",RowBox[{"{","\n","   ",RowBox[{RowBox[{"Range","[",RowBox[
+{"0",","," ","numeroDias",","," ","50"}],"]"}],",","\n","   ",RowBox[{"Range","[",RowBox[
+{"0",","," ","50",","," ","10"}],"]"}]}],"\n"," ","}"}]}],",","\n","\n"," ",RowBox[
+{"GridLinesStyle"," ","\[Rule]"," ",RowBox[{"Directive","[",RowBox[{RowBox[{"GrayLevel","[","0.85","]"}],","," ","Dashed"}],"]"}]}],",","\n","\n"," ",RowBox[
+{"BaseStyle"," ","\[Rule]"," ",RowBox[{"{","\n","   ",RowBox[{RowBox[{"FontFamily"," ","\[Rule]"," ","\"Times\""}],",","\n","   ",RowBox[
+{"FontSize"," ","\[Rule]"," ","12"}]}],"\n"," ","}"}]}]}],"\n","]"}]}],";"}],RowBox[
+{"\n","\n"}],"graficaEventos"}],"Input",CellLabel -> "In[190]:= ",ExpressionUUID -> "eb0069ae-7f75-47fa-9ce1-e59bec8808f3"],Cell[
+BoxData[
+GraphicsBox[{{{Directive[GrayLevel[0.92`],EdgeForm[None]],PolygonBox[CompressedData[
+"1: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"]]},{Directive[
+GrayLevel[0.92`],EdgeForm[None]],PolygonBox[CompressedData["1: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"]]}},{{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{0,0.5249226817084975`},{1,0.25072789621990893`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{1,0.25072789621990893`},{1.9054076299346443`,0.04717326075860155`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{1.9054076299346443`,0.04717326075860155`},{2,0.02590691091851412`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{2,0.02590691091851412`},{3,0.2991403414467674`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{3,0.2991403414467674`},{4,0.5740639712796234`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{4,0.5740639712796234`},{5,0.8492837301813756`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{5,0.8492837301813756`},{6,1.1247417599035745`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{6,1.1247417599035745`},{7,1.4004190436809374`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{7,1.4004190436809374`},{8,1.6763023357824394`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{8,1.6763023357824394`},{9,1.952379261636444`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{9,1.952379261636444`},{10,2.228637158692356`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{10,2.228637158692356`},{11,2.505062732500611`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{11,2.505062732500611`},{12,2.781641935907109`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{12,2.781641935907109`},{13,3.0583599249067634`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{13,3.0583599249067634`},{14,3.3352010607038918`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{14,3.3352010607038918`},{15,3.6121489630002377`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{15,3.6121489630002377`},{16,3.8891866284570775`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{16,3.8891866284570775`},{17,4.166296625140808`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{17,4.166296625140808`},{18,4.443461363959728`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{18,4.443461363959728`},{19,4.720663436122422`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{19,4.720663436122422`},{20,4.997885995812323`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{20,4.997885995812323`},{21,5.275113162406643`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{21,5.275113162406643`},{22,5.552330416287643`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{22,5.552330416287643`},{23,5.829524962381693`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{23,5.829524962381693`},{24,6.106686030688042`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{24,6.106686030688042`},{25,6.3838050709760905`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{25,6.3838050709760905`},{26,6.660875784807687`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{26,6.660875784807687`},{27,6.9378939360889715`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{27,6.9378939360889715`},{28,7.2148569081523`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{28,7.2148569081523`},{29,7.491763035673422`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{29,7.491763035673422`},{30,7.768610813956398`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{30,7.768610813956398`},{31,8.045398136071258`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{31,8.045398136071258`},{32,8.32212169858934`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{32,8.32212169858934`},{33,8.598776652708436`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{33,8.598776652708436`},{34,8.87535649637249`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{34,8.87535649637249`},{35,9.151853143901093`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{35,9.151853143901093`},{36,9.428257089206797`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{36,9.428257089206797`},{37,9.70455758934346`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{37,9.70455758934346`},{38,9.98074281985609`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{38,9.98074281985609`},{38.069757945088696`,10.`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{38.069757945088696`,10.`},{39,10.25679997892844`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{39,10.25679997892844`},{40,10.532715337871622`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{40,10.532715337871622`},{41,10.808474250821698`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{41,10.808474250821698`},{42,11.08406114837287`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{42,11.08406114837287`},{43,11.35945954931985`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{43,11.35945954931985`},{44,11.63465213065064`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{44,11.63465213065064`},{45,11.909620894975207`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{45,11.909620894975207`},{46,12.18434746272004`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{46,12.18434746272004`},{47,12.45881349204596`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{47,12.45881349204596`},{48,12.733001196990703`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{48,12.733001196990703`},{49,13.006893904698572`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{49,13.006893904698572`},{50,13.280476577797021`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{50,13.280476577797021`},{51,13.5537362338222`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{51,13.5537362338222`},{52,13.826662214637931`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{52,13.826662214637931`},{53,14.099246282898523`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{53,14.099246282898523`},{54,14.371482539719343`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{54,14.371482539719343`},{55,14.643367167075207`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{55,14.643367167075207`},{56,14.914898007255191`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{56,14.914898007255191`},{57,15.186074008493655`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{57,15.186074008493655`},{58,15.456894591286853`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{58,15.456894591286853`},{59,15.727359013727481`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{59,15.727359013727481`},{60,15.997465821096048`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{60,15.997465821096048`},{61,16.267212446014703`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{61,16.267212446014703`},{62,16.536594986261747`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{62,16.536594986261747`},{63,16.80560814434635`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{63,16.80560814434635`},{64,17.074245282655053`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{64,17.074245282655053`},{65,17.342498537092357`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{65,17.342498537092357`},{66,17.610358937941356`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{66,17.610358937941356`},{67,17.877816501318108`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{67,17.877816501318108`},{68,18.1448602717597`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{68,18.1448602717597`},{69,18.411478312929557`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{69,18.411478312929557`},{70,18.677657659346302`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{70,18.677657659346302`},{71,18.94338425851692`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{71,18.94338425851692`},{72,19.2086429500925`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{72,19.2086429500925`},{73,19.473417542910045`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{73,19.473417542910045`},{74,19.73769105359764`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{74,19.73769105359764`},{75,20.001446150135553`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{75,20.001446150135553`},{76,20.264665794122333`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{76,20.264665794122333`},{77,20.52733400620262`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{77,20.52733400620262`},{78,20.78943662008137`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{78,20.78943662008137`},{79,21.050961876194975`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{79,21.050961876194975`},{80,21.311900748956212`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{80,21.311900748956212`},{81,21.57224697861198`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{81,21.57224697861198`},{82,21.831996849147547`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{82,21.831996849147547`},{83,22.091148788971957`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{83,22.091148788971957`},{84,22.34970287048515`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{84,22.34970287048515`},{85,22.60766026600495`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{85,22.60766026600495`},{86,22.86502269966289`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{86,22.86502269966289`},{87,23.121791926480135`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{87,23.121791926480135`},{88,23.377969268816926`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{88,23.377969268816926`},{89,23.633555239113345`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{89,23.633555239113345`},{90,23.888549270066516`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{90,23.888549270066516`},{91,24.142949558075202`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{91,24.142949558075202`},{92,24.39675300729283`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{92,24.39675300729283`},{93,24.649955246202005`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{93,24.649955246202005`},{94,24.90255068061051`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{94,24.90255068061051`},{95,25.154532547209453`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{95,25.154532547209453`},{96,25.405892938474253`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{96,25.405892938474253`},{97,25.65662278052793`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{97,25.65662278052793`},{98,25.906711759588724`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{98,25.906711759588724`},{99,26.156148210524574`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{99,26.156148210524574`},{100,26.404919004333895`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{100,26.404919004333895`},{101,26.6530094994572`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{101,26.6530094994572`},{102,26.900403647691856`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{102,26.900403647691856`},{103,27.14708435199101`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{103,27.14708435199101`},{104,27.393034136346927`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{104,27.393034136346927`},{105,27.63823609393126`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{105,27.63823609393126`},{106,27.882674953115554`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{106,27.882674953115554`},{107,28.126338011150533`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{107,28.126338011150533`},{108,28.36921570227214`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{108,28.36921570227214`},{109,28.611301694336397`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{109,28.611301694336397`},{110,28.852592568783226`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{110,28.852592568783226`},{111,29.093087241644316`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{111,29.093087241644316`},{112,29.332786294621254`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{112,29.332786294621254`},{113,29.571691334390028`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{113,29.571691334390028`},{114,29.809804434191882`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{114,29.809804434191882`},{115,30.047127666101783`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{115,30.047127666101783`},{116,30.283662712509038`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{116,30.283662712509038`},{117,30.519410544133493`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{117,30.519410544133493`},{118,30.75437115860333`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{118,30.75437115860333`},{119,30.988543379420666`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{119,30.988543379420666`},{120,31.221924715711097`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{120,31.221924715711097`},{121,31.454511278069106`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{121,31.454511278069106`},{122,31.686297737726697`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{122,31.686297737726697`},{123,31.917277308661376`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{123,31.917277308661376`},{124,32.14744172794054`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{124,32.14744172794054`},{125,32.376781210235116`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{125,32.376781210235116`},{126,32.605284358568944`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{126,32.605284358568944`},{127,32.83293802615933`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{127,32.83293802615933`},{128,33.059727145422734`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{128,33.059727145422734`},{129,33.285634572042014`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{129,33.285634572042014`},{130,33.51064103281473`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{130,33.51064103281473`},{131,33.73472530397596`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{131,33.73472530397596`},{132,33.957864752601886`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{132,33.957864752601886`},{133,34.18003630743629`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{133,34.18003630743629`},{134,34.40121776941772`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{134,34.40121776941772`},{135,34.62138918027241`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{135,34.62138918027241`},{136,34.84053386655475`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{136,34.84053386655475`},{137,35.058638868352006`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{137,35.058638868352006`},{138,35.275694706480664`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{138,35.275694706480664`},{139,35.4916946773041`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{139,35.4916946773041`},{140,35.7066339578001`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{140,35.7066339578001`},{141,35.92050875185969`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{141,35.92050875185969`},{142,36.133315595200045`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{142,36.133315595200045`},{143,36.34505083770276`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{143,36.34505083770276`},{144,36.5557102682621`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{144,36.5557102682621`},{145,36.765288832719484`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{145,36.765288832719484`},{146,36.973780403504605`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{146,36.973780403504605`},{147,37.18117757576025`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{147,37.18117757576025`},{148,37.38747148011693`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{148,37.38747148011693`},{149,37.592651612336745`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{149,37.592651612336745`},{150,37.796705683209495`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{150,37.796705683209495`},{151,37.99961948900311`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{151,37.99961948900311`},{152,38.20137679598802`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{152,38.20137679598802`},{153,38.40195922536604`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{153,38.40195922536604`},{154,38.601346121068865`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{154,38.601346121068865`},{155,38.799514385527864`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{155,38.799514385527864`},{156,38.99643828107772`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{156,38.99643828107772`},{157,39.19208922018026`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{157,39.19208922018026`},{158,39.386435608256434`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{158,39.386435608256434`},{159,39.5794428540853`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{159,39.5794428540853`},{160,39.77107370503689`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{160,39.77107370503689`},{161,39.96128905603733`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{161,39.96128905603733`},{162,40.15004927187134`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{162,40.15004927187134`},{163,40.337315844501816`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{163,40.337315844501816`},{164,40.52305297620921`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{164,40.52305297620921`},{165,40.70722861026116`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{165,40.70722861026116`},{166,40.88981462246063`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{166,40.88981462246063`},{167,41.070786230132875`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{167,41.070786230132875`},{168,41.25012093884171`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{168,41.25012093884171`},{169,41.42779739718795`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{169,41.42779739718795`},{170,41.60379441298669`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{170,41.60379441298669`},{171,41.77809022564122`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{171,41.77809022564122`},{172,41.95066201555185`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{172,41.95066201555185`},{173,42.121485580257016`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{173,42.121485580257016`},{174,42.29053510059277`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{174,42.29053510059277`},{175,42.45778293548346`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{175,42.45778293548346`},{176,42.62319940603311`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{176,42.62319940603311`},{177,42.78675255084461`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{177,42.78675255084461`},{178,42.94840785168743`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{178,42.94840785168743`},{179,43.10812793979595`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{179,43.10812793979595`},{180,43.26587229723716`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{180,43.26587229723716`},{181,43.421596965119086`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{181,43.421596965119086`},{182,43.57525426339393`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{182,43.57525426339393`},{183,43.72679252015964`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{183,43.72679252015964`},{184,43.876155807648644`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{184,43.876155807648644`},{185,44.02328369362274`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{185,44.02328369362274`},{186,44.16811104503292`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{186,44.16811104503292`},{187,44.31056796531835`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{187,44.31056796531835`},{188,44.45057999677227`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{188,44.45057999677227`},{189,44.588068745911166`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{189,44.588068745911166`},{190,44.7229530452943`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{190,44.7229530452943`},{191,44.85515060914805`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{191,44.85515060914805`},{192,44.98457989590749`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{192,44.98457989590749`},{193,45.111161687820065`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{193,45.111161687820065`},{194,45.234819907753646`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{194,45.234819907753646`},{195,45.35548146448513`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{195,45.35548146448513`},{196,45.473075288624194`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{196,45.473075288624194`},{197,45.587530957413556`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{197,45.587530957413556`},{198,45.698777309332904`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{198,45.698777309332904`},{199,45.80674129683995`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{199,45.80674129683995`},{200,45.911347151069236`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{200,45.911347151069236`},{201,46.01251581504744`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{201,46.01251581504744`},{202,46.110164552311325`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{202,46.110164552311325`},{203,46.20420663320284`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{203,46.20420663320284`},{204,46.29455101750763`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{204,46.29455101750763`},{205,46.38110197558282`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{205,46.38110197558282`},{206,46.46375861524888`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{206,46.46375861524888`},{207,46.54241430711607`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{207,46.54241430711607`},{208,46.61695602530498`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{208,46.61695602530498`},{209,46.687263640490215`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{209,46.687263640490215`},{210,46.753209951173076`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{210,46.753209951173076`},{211,46.814657024177286`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{211,46.814657024177286`},{212,46.87146020997486`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{212,46.87146020997486`},{213,46.92346459160475`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{213,46.92346459160475`},{214,46.97050547862476`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{214,46.97050547862476`},{215,47.012408309295445`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{215,47.012408309295445`},{216,47.048988825373414`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{216,47.048988825373414`},{217,47.080053620558196`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{217,47.080053620558196`},{218,47.105401151040304`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{218,47.105401151040304`},{219,47.12482320860361`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{219,47.12482320860361`},{220,47.13810668409663`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{220,47.13810668409663`},{221,47.145035249569545`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{221,47.145035249569545`},{222,47.14539048520085`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{222,47.14539048520085`},{223,47.138952081962316`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{223,47.138952081962316`},{224,47.12549704405926`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{224,47.12549704405926`},{225,47.10479813477897`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{225,47.10479813477897`},{226,47.07662197967022`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{226,47.07662197967022`},{227,47.04072720992206`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{227,47.04072720992206`},{228,46.99686287398732`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{228,46.99686287398732`},{229,46.944767177749895`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{229,46.944767177749895`},{230,46.884166498056814`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{230,46.884166498056814`},{231,46.81477456038372`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{231,46.81477456038372`},{232,46.73629165984285`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{232,46.73629165984285`},{233,46.64840381497845`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{233,46.64840381497845`},{234,46.55078176448358`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{234,46.55078176448358`},{235,46.44307974637817`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{235,46.44307974637817`},{236,46.324934040397174`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{236,46.324934040397174`},{237,46.1959613091181`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{237,46.1959613091181`},{238,46.055756835959414`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{238,46.055756835959414`},{239,45.90389281304105`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{239,45.90389281304105`},{240,45.73991685788868`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{240,45.73991685788868`},{241,45.563350921066316`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{241,45.563350921066316`},{242,45.373690691925184`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{242,45.373690691925184`},{243,45.17040554174889`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{243,45.17040554174889`},{244,44.95293899191126`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{244,44.95293899191126`},{245,44.72070967157645`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{245,44.72070967157645`},{246,44.47311271937783`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{246,44.47311271937783`},{247,44.20952155323162`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{247,44.20952155323162`},{248,43.92928985704986`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{248,43.92928985704986`},{249,43.63175352519245`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{249,43.63175352519245`},{250,43.316232225027065`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{250,43.316232225027065`},{251,42.982030264214295`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{251,42.982030264214295`},{252,42.6284366193415`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{252,42.6284366193415`},{253,42.2547242432835`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{253,42.2547242432835`},{254,41.860149000367734`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{254,41.860149000367734`},{255,41.44394867814313`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{255,41.44394867814313`},{256,41.00534247463908`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{256,41.00534247463908`},{257,40.54353122092962`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{257,40.54353122092962`},{258,40.057698450535405`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{258,40.057698450535405`},{259,39.54701232007347`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{259,39.54701232007347`},{260,39.010628330874034`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{260,39.010628330874034`},{261,38.44769278795567`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{261,38.44769278795567`},{262,37.857346947371255`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{262,37.857346947371255`},{263,37.238731842164114`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{263,37.238731842164114`},{264,36.59099384958999`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{264,36.59099384958999`},{265,35.913291184091676`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{265,35.913291184091676`},{266,35.20480167997052`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{266,35.20480167997052`},{267,34.46473244588432`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{267,34.46473244588432`},{268,33.692332165417035`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{268,33.692332165417035`},{269,32.88690689011115`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{269,32.88690689011115`},{270,32.04784005510783`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{270,32.04784005510783`},{271,31.174617174895616`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{271,31.174617174895616`},{272,30.266855392509385`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{272,30.266855392509385`},{273,29.324337934553764`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{273,29.324337934553764`},{274,28.347053658571017`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{274,28.347053658571017`},{275,27.335242241342716`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{275,27.335242241342716`},{276,26.289446071945115`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{276,26.289446071945115`},{277,25.21057056388808`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{277,25.21057056388808`},{278,24.099955479948804`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{278,24.099955479948804`},{279,22.959461171348494`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{279,22.959461171348494`},{280,21.791575644155547`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{280,21.791575644155547`},{281,20.59955141956173`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{281,20.59955141956173`},{282,19.387585691705464`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{282,19.387585691705464`},{283,18.161063930074206`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{283,18.161063930074206`},{284,16.9268966679153`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{284,16.9268966679153`},{285,15.693992606036549`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{285,15.693992606036549`},{286,14.473928151018717`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{286,14.473928151018717`},{287,13.28188961294649`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{287,13.28188961294649`},{288,12.137961862106215`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{288,12.137961862106215`},{289,11.068764510894777`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{289,11.068764510894777`},{290,10.109170321862772`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{290,10.109170321862772`},{290.1354467425513`,10.00000000000002`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{290.1354467425513`,10.00000000000002`},{291,9.303168495562778`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{291,9.303168495562778`},{292,8.7017645916812`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{292,8.7017645916812`},{293,8.355025122272497`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{293,8.355025122272497`},{293.42867572746513`,8.330491104868502`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{293.42867572746513`,8.330491104868502`},{294,8.29779300990385`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{294,8.29779300990385`},{295,8.535756268900736`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{295,8.535756268900736`},{296,9.04279485045012`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{296,9.04279485045012`},{297,9.772050925472765`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{297,9.772050925472765`},{297.2534838296837`,9.999999999999993`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{297.2534838296837`,9.999999999999993`},{298,10.671315682564567`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{298,10.671315682564567`},{299,11.693485500408551`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{299,11.693485500408551`},{300,12.800415984627614`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{300,12.800415984627614`},{301,13.962773659693548`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{301,13.962773659693548`},{302,15.158435275987216`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{302,15.158435275987216`},{303,16.370748335448276`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{303,16.370748335448276`},{304,17.58709837038555`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{304,17.58709837038555`},{305,18.797842909757335`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{305,18.797842909757335`},{306,19.995549573454213`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{306,19.995549573454213`},{307,21.174457627352126`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{307,21.174457627352126`},{308,22.33009569322271`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{308,22.33009569322271`},{309,23.45900643332123`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{309,23.45900643332123`},{310,24.558544191490384`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{310,24.558544191490384`},{311,25.626722623809577`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{311,25.626722623809577`},{312,26.662096980644776`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{312,26.662096980644776`},{313,27.663670851319207`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{313,27.663670851319207`},{314,28.630820619369803`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{314,28.630820619369803`},{315,29.563233145937108`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{315,29.563233145937108`},{316,30.46085367496675`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{316,30.46085367496675`},{317,31.323841894796537`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{317,31.323841894796537`},{318,32.15253467574859`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{318,32.15253467574859`},{319,32.9474143546658`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{319,32.9474143546658`},{320,33.709081634842455`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{320,33.709081634842455`},{321,34.4382322644326`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{321,34.4382322644326`},{322,35.135636689941585`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{322,35.135636689941585`},{323,35.802121907543935`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{323,35.802121907543935`},{324,36.438554836540284`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{324,36.438554836540284`},{325,37.04582681544884`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{325,37.04582681544884`},{326,37.624839307561984`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{326,37.624839307561984`},{327,38.17649145760994`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{327,38.17649145760994`},{328,38.701670427911694`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{328,38.701670427911694`},{329,39.20124516569405`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{329,39.20124516569405`},{330,39.6760634944982`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{330,39.6760634944982`},{331,40.12695165701406`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{331,40.12695165701406`},{332,40.55471512100382`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{332,40.55471512100382`},{333,40.96013965897893`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{333,40.96013965897893`},{334,41.343992158362155`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{334,41.343992158362155`},{335,41.70702101972349`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{335,41.70702101972349`},{336,42.04995622600742`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{336,42.04995622600742`},{337,42.37350923077588`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{337,42.37350923077588`},{338,42.678372788356015`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{338,42.678372788356015`},{339,42.96522079525511`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{339,42.96522079525511`},{340,43.23470816658427`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{340,43.23470816658427`},{341,43.48747074691416`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{341,43.48747074691416`},{342,43.72412525189063`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{342,43.72412525189063`},{343,43.945269246871284`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{343,43.945269246871284`},{344,44.151481181686236`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{344,44.151481181686236`},{345,44.34332050732851`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{345,44.34332050732851`},{346,44.521327895422345`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{346,44.521327895422345`},{347,44.68602556249659`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{347,44.68602556249659`},{348,44.83791766840231`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{348,44.83791766840231`},{349,44.97749071276014`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{349,44.97749071276014`},{350,45.10521379949444`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{350,45.10521379949444`},{351,45.221538591116115`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{351,45.221538591116115`},{352,45.32689876394513`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{352,45.32689876394513`},{353,45.42170885586667`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{353,45.42170885586667`},{354,45.50636261568882`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{354,45.50636261568882`},{355,45.58123128861225`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{355,45.58123128861225`},{356,45.64666253734932`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{356,45.64666253734932`},{357,45.70298065881136`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{357,45.70298065881136`},{358,45.75048832168554`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{358,45.75048832168554`},{359,45.78946945384459`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{359,45.78946945384459`},{360,45.82019253889766`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{360,45.82019253889766`},{361,45.842913622673436`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{361,45.842913622673436`},{362,45.8578786451048`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{362,45.8578786451048`},{363,45.865325045393945`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{363,45.865325045393945`},{364,45.86548278684465`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{364,45.86548278684465`},{365,45.85857500330354`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{365,45.85857500330354`},{366,45.84481843948557`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{366,45.84481843948557`},{367,45.824423798922275`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{367,45.824423798922275`},{368,45.797596057998646`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{368,45.797596057998646`},{369,45.76453476463801`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{369,45.76453476463801`},{370,45.72543431740076`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{370,45.72543431740076`},{371,45.68048421268197`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{371,45.68048421268197`},{372,45.629869250217894`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{372,45.629869250217894`},{373,45.573769695062744`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{373,45.573769695062744`},{374,45.51236140180782`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{374,45.51236140180782`},{375,45.445815908663675`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{375,45.445815908663675`},{376,45.37430050107289`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{376,45.37430050107289`},{377,45.297978225036076`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{377,45.297978225036076`},{378,45.217007800816816`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{378,45.217007800816816`},{379,45.13154335500466`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{379,45.13154335500466`},{380,45.04173386917439`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{380,45.04173386917439`},{381,44.94772226459859`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{381,44.94772226459859`},{382,44.84964413779127`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{382,44.84964413779127`},{383,44.74762633988178`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{383,44.74762633988178`},{384,44.641785792954636`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{384,44.641785792954636`},{385,44.53222901767652`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{385,44.53222901767652`},{386,44.41905268090976`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{386,44.41905268090976`},{387,44.30234509750131`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{387,44.30234509750131`},{388,44.18218826384066`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{388,44.18218826384066`},{389,44.058659884770506`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{389,44.058659884770506`},{390,43.9318350010011`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{390,43.9318350010011`},{391,43.80178707644584`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{391,43.80178707644584`},{392,43.66858860506264`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{392,43.66858860506264`},{393,43.532311386455255`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{393,43.532311386455255`},{394,43.39302662231123`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{394,43.39302662231123`},{395,43.250804947757956`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{395,43.250804947757956`},{396,43.10571646604199`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{396,43.10571646604199`},{397,42.95783081643957`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{397,42.95783081643957`},{398,42.80721727736835`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{398,42.80721727736835`},{399,42.65394488873876`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{399,42.65394488873876`},{400,42.49808256829683`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{400,42.49808256829683`},{401,42.33969919524339`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{401,42.33969919524339`},{402,42.17886363918007`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{402,42.17886363918007`},{403,42.01564472061404`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{403,42.01564472061404`},{404,41.850111096397434`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{404,41.850111096397434`},{405,41.68233106501004`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{405,41.68233106501004`},{406,41.51237227983312`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{406,41.51237227983312`},{407,41.34030134502226`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{407,41.34030134502226`},{408,41.166183256110855`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{408,41.166183256110855`},{409,40.99008065068733`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{409,40.99008065068733`},{410,40.8120528718511`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{410,40.8120528718511`},{411,40.63215492969877`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{411,40.63215492969877`},{412,40.450436556739184`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{412,40.450436556739184`},{413,40.26694163228728`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{413,40.26694163228728`},{414,40.08170821869059`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{414,40.08170821869059`},{415,39.894769278882094`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{415,39.894769278882094`},{416,39.70615390724506`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{416,39.70615390724506`},{417,39.51588874536036`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{417,39.51588874536036`},{418,39.32399925687584`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{418,39.32399925687584`},{419,39.13051066686344`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{419,39.13051066686344`},{420,38.93544852912395`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{420,38.93544852912395`},{421,38.7388389925987`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{421,38.7388389925987`},{422,38.54070887771088`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{422,38.54070887771088`},{423,38.34108566587096`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{423,38.34108566587096`},{424,38.1399974777567`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{424,38.1399974777567`},{425,37.937473085611245`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{425,37.937473085611245`},{426,37.73354197853383`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{426,37.73354197853383`},{427,37.52823447810293`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{427,37.52823447810293`},{428,37.3215818839512`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{428,37.3215818839512`},{429,37.1136166151685`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{429,37.1136166151685`},{430,36.90437230561487`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{430,36.90437230561487`},{431,36.69388381180327`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{431,36.69388381180327`},{432,36.4821871017673`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{432,36.4821871017673`},{433,36.269319009752785`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{433,36.269319009752785`},{434,36.055316858583524`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{434,36.055316858583524`},{435,35.84021796319144`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{435,35.84021796319144`},{436,35.62405903281266`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{436,35.62405903281266`},{437,35.40687549055389`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{437,35.40687549055389`},{438,35.18870073738364`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{438,35.18870073738364`},{439,34.96956541223229`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{439,34.96956541223229`},{440,34.74949673996434`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{440,34.74949673996434`},{441,34.528518095765875`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{441,34.528518095765875`},{442,34.30664891551893`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{442,34.30664891551893`},{443,34.083905021572185`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{443,34.083905021572185`},{444,33.8602993226747`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{444,33.8602993226747`},{445,33.635842737271894`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{445,33.635842737271894`},{446,33.41054513985044`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{446,33.41054513985044`},{447,33.184416160820916`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{447,33.184416160820916`},{448,32.95746575241653`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{448,32.95746575241653`},{449,32.72970451798156`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{449,32.72970451798156`},{450,32.50114385742328`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{450,32.50114385742328`},{451,32.27179600178004`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{451,32.27179600178004`},{452,32.0416740056095`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{452,32.0416740056095`},{453,31.810791750428645`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{453,31.810791750428645`},{454,31.579163994111838`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{454,31.579163994111838`},{455,31.34680648283724`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{455,31.34680648283724`},{456,31.113736123059326`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{456,31.113736123059326`},{457,30.87997118999785`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{457,30.87997118999785`},{458,30.64553152736679`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{458,30.64553152736679`},{459,30.410438675508363`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{459,30.410438675508363`},{460,30.174715860311064`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{460,30.174715860311064`},{461,29.938387790879517`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{461,29.938387790879517`},{462,29.701480250044508`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{462,29.701480250044508`},{463,29.46401950732994`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{463,29.46401950732994`},{464,29.226031621174258`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{464,29.226031621174258`},{465,28.98754171211554`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{465,28.98754171211554`},{466,28.74857328138457`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{466,28.74857328138457`},{467,28.50914763149304`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{467,28.50914763149304`},{468,28.269283431007892`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{468,28.269283431007892`},{469,28.028996459867173`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{469,28.028996459867173`},{470,27.788299567650082`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{470,27.788299567650082`},{471,27.547202862939493`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{471,27.547202862939493`},{472,27.305714120067524`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{472,27.305714120067524`},{473,27.06383934713314`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{473,27.06383934713314`},{474,26.82158342457261`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{474,26.82158342457261`},{475,26.57895071486971`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{475,26.57895071486971`},{476,26.33594556530094`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{476,26.33594556530094`},{477,26.092572665579134`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{477,26.092572665579134`},{478,25.848837263152337`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{478,25.848837263152337`},{479,25.60474526786514`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{479,25.60474526786514`},{480,25.360303291235297`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{480,25.360303291235297`},{481,25.115518666876575`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{481,25.115518666876575`},{482,24.87039949292771`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{482,24.87039949292771`},{483,24.624954727798425`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{483,24.624954727798425`},{484,24.379194357702723`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{484,24.379194357702723`},{485,24.133129635804597`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{485,24.133129635804597`},{486,23.88677336615959`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{486,23.88677336615959`},{487,23.640140171883278`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{487,23.640140171883278`},{488,23.393246655423756`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{488,23.393246655423756`},{489,23.14611134759733`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{489,23.14611134759733`},{490,22.898754371094597`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{490,22.898754371094597`},{491,22.651196816594247`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{491,22.651196816594247`},{492,22.40345991969882`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{492,22.40345991969882`},{493,22.155564188946858`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{493,22.155564188946858`},{494,21.90752863726791`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{494,21.90752863726791`},{495,21.659370217508293`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{495,21.659370217508293`},{496,21.411103493213687`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{496,21.411103493213687`},{497,21.162740524047305`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{497,21.162740524047305`},{498,20.914290924220268`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{498,20.914290924220268`},{499,20.665762054115405`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{499,20.665762054115405`},{500,20.41715931390758`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{500,20.41715931390758`},{501,20.16848651190996`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{501,20.16848651190996`},{502,19.919746277020018`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{502,19.919746277020018`},{503,19.67094047840833`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{503,19.67094047840833`},{504,19.422070613826143`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{504,19.422070613826143`},{505,19.17313813456539`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{505,19.17313813456539`},{506,18.924144689575247`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{506,18.924144689575247`},{507,18.675092288851083`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{507,18.675092288851083`},{508,18.425983402069843`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{508,18.425983402069843`},{509,18.176821019386715`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{509,18.176821019386715`},{510,17.927608706944792`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{510,17.927608706944792`},{511,17.678350690835877`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{511,17.678350690835877`},{512,17.429052000134252`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{512,17.429052000134252`},{513,17.179718690688603`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{513,17.179718690688603`},{514,16.93035815233872`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{514,16.93035815233872`},{515,16.68097946857247`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{515,16.68097946857247`},{516,16.431593749559077`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{516,16.431593749559077`},{517,16.182214311299788`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{517,16.182214311299788`},{518,15.93285655723942`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{518,15.93285655723942`},{519,15.683537471022085`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{519,15.683537471022085`},{520,15.434274754097265`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{520,15.434274754097265`},{521,15.185085783516232`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{521,15.185085783516232`},{522,14.935986635676757`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{522,14.935986635676757`},{523,14.686991376123686`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{523,14.686991376123686`},{524,14.438111693615935`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{524,14.438111693615935`},{525,14.189356839342823`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{525,14.189356839342823`},{526,13.940733773098195`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{526,13.940733773098195`},{527,13.692247417843532`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{527,13.692247417843532`},{528,13.443900954658343`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{528,13.443900954658343`},{529,13.195696123652976`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{529,13.195696123652976`},{530,12.94763351915107`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{530,12.94763351915107`},{531,12.699712876596248`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{531,12.699712876596248`},{532,12.451933348330302`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{532,12.451933348330302`},{533,12.20429376135515`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{533,12.20429376135515`},{534,11.956792847392613`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{534,11.956792847392613`},{535,11.709429436927609`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{535,11.709429436927609`},{536,11.462202614568097`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{536,11.462202614568097`},{537,11.215111841654519`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{537,11.215111841654519`},{538,10.968157061162854`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{538,10.968157061162854`},{539,10.721338808050634`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{539,10.721338808050634`},{540,10.47465835361094`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{540,10.47465835361094`},{541,10.228117913657947`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`]],LineBox[{{541,10.228117913657947`},{541.9258146062532`,10.000000000000012`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{541.9258146062532`,10.000000000000012`},{542,9.981720943770926`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{542,9.981720943770926`},{543,9.735472524702534`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{543,9.735472524702534`},{544,9.489379800787212`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{544,9.489379800787212`},{545,9.24345237415471`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{545,9.24345237415471`},{546,8.99770249756576`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{546,8.99770249756576`},{547,8.752144895092425`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{547,8.752144895092425`},{548,8.506796123247947`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{548,8.506796123247947`},{549,8.2616735619818`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{549,8.2616735619818`},{550,8.01679430116492`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{550,8.01679430116492`},{551,7.772174238467129`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{551,7.772174238467129`},{552,7.52782759444391`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{552,7.52782759444391`},{553,7.283766869616156`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{553,7.283766869616156`},{554,7.040003135162817`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{554,7.040003135162817`},{555,6.796546511770414`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{555,6.796546511770414`},{556,6.553406724397208`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{556,6.553406724397208`},{557,6.310593676971532`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{557,6.310593676971532`},{558,6.068118039299718`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{558,6.068118039299718`},{559,5.825991869358834`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{559,5.825991869358834`},{560,5.584229310312689`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{560,5.584229310312689`},{561,5.342847409406459`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{561,5.342847409406459`},{562,5.101867111782122`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{562,5.101867111782122`},{563,4.861314492078278`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{563,4.861314492078278`},{564,4.621222306032237`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{564,4.621222306032237`},{565,4.381631979066178`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{565,4.381631979066178`},{566,4.142596205727282`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{566,4.142596205727282`},{567,3.9041824223263895`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{567,3.9041824223263895`},{568,3.666477550316723`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{568,3.666477550316723`},{569,3.429594616470058`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{569,3.429594616470058`},{570,3.1936821848187456`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{570,3.1936821848187456`},{571,2.9589380701381`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{571,2.9589380701381`},{572,2.7256297021376854`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{572,2.7256297021376854`},{573,2.494125079044109`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{573,2.494125079044109`},{574,2.2649410927502087`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{574,2.2649410927502087`},{575,2.0388213318145008`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{575,2.0388213318145008`},{576,1.8168656652144266`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{576,1.8168656652144266`},{577,1.6007535559866544`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{577,1.6007535559866544`},{578,1.3931399623861525`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{578,1.3931399623861525`},{579,1.19836447988482`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{579,1.19836447988482`},{580,1.0236731643099037`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{580,1.0236731643099037`},{581,0.8809623460998698`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{581,0.8809623460998698`},{582,0.7876568016810218`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{582,0.7876568016810218`},{583,0.7619678182735055`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{583,0.7619678182735055`},{583.2928505270138`,0.776095137613321`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{583.2928505270138`,0.776095137613321`},{584,0.8102085350783277`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{584,0.8102085350783277`},{585,0.9207115706417264`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{585,0.9207115706417264`},{586,1.074337713944338`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{586,1.074337713944338`},{587,1.2552765922531224`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{587,1.2552765922531224`},{588,1.4533020902427078`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{588,1.4533020902427078`},{589,1.662271753464282`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{589,1.662271753464282`},{590,1.8785004675132442`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{590,1.8785004675132442`},{591,2.0997194470940914`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{591,2.0997194470940914`},{592,2.3244843702809854`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{592,2.3244843702809854`},{593,2.5518445334715305`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{593,2.5518445334715305`},{594,2.7811546341344187`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{594,2.7811546341344187`},{595,3.011964505416374`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{595,3.011964505416374`},{596,3.2439523915096675`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{596,3.2439523915096675`},{597,3.4768832532177014`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{597,3.4768832532177014`},{598,3.7105818973729576`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{598,3.7105818973729576`},{599,3.9449151370425883`}}]},{Directive[
+GrayLevel[0],AbsoluteThickness[1.8`],Dashing[{Small,Small}]],LineBox[{{599,3.9449151370425883`},{600,4.179779602647493`}}]}},{Directive[
+GrayLevel[0],Dashing[{Small,Small}]],LineBox[{{0,10},{600,10}}]}},GridLinesStyle -> Directive[
+GrayLevel[0.85`],Dashing[{Small,Small}]],AspectRatio -> 0.62`,Frame -> True,BaseStyle -> {FontFamily -> "Times",FontSize -> 12},
+PlotRange -> {{0,600},{0,50}},ImageSize -> 700,FrameLabel -> CompressedData["1:eJy9jkEKwkAMRYsoioieQKhd1WsIFgRBaHuBaKclkJmUyRTs7c3UheDKlZsPP/l5+Yc7l+0sSRKZq1xRwtstVQr29sTPNm5kpVKFkYxOqp2arEZje07zBkGOGW519iGVAxlZTxAXCrBIY7VQW6M18hXbTGiP/c1dXD8EicECSIzER7WHBgOyA4qNfum3j/3OxK6Dhx6m4LqBwKd5pyz+Z9sXlpNYHg=="],
+Axes -> False,FrameTicks -> {{{{0,FormBox["0",TraditionalForm]},{10,FormBox["10",
+TraditionalForm]},{20,FormBox["20",TraditionalForm]},{30,FormBox["30",TraditionalForm]},{40,FormBox[
+"40",TraditionalForm]},{50,FormBox["50",TraditionalForm]}},None},{{{0,FormBox["0",
+TraditionalForm]},{50,FormBox["50",TraditionalForm]},{100,FormBox["100",TraditionalForm]},{150,FormBox[
+"150",TraditionalForm]},{200,FormBox["200",TraditionalForm]},{250,FormBox["250",TraditionalForm]},{300,FormBox[
+"300",TraditionalForm]},{350,FormBox["350",TraditionalForm]},{400,FormBox["400",TraditionalForm]},{450,FormBox[
+"450",TraditionalForm]},{500,FormBox["500",TraditionalForm]},{550,FormBox["550",TraditionalForm]},{600,FormBox[
+"600",TraditionalForm]}},None}},GridLines -> CompressedData["1:eJxTTMoPSmNiYGAoZgESPpnFJWm8yLxMIM2QaQQiUkDENBBxAkT8AhE6jEAiDkRMABGHQMQXEKEGNDMzAkiksWEaxwUiRECEHIjQgFkBABcHF2s="],
+FrameStyle -> Directive[GrayLevel[0],12],ExpressionUUID -> "a618165a-b09d-4b38-a3c7-cc74b36cd966"],
+StandardForm],"Output",CellLabel -> "Out[191]= ",ExpressionUUID -> "dd91f6fd-f8b1-4507-b783-c513f45e7403"]},
+Open],ExpressionUUID -> "c20ec867-a8c7-40f6-8223-85d4b34a9c17"],Cell[
+BoxData[{RowBox[
+{RowBox[{"directorio"," ","="," ",RowBox[{"CloudObject","[","\n","  ","\"https://www.wolframcloud.com/obj/edwinperez/plots_venus\"","\n","]"}]}],";"}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"Export","[","\n"," ",RowBox[{RowBox[{"CloudObject","[","\n","  ","\"https://www.wolframcloud.com/obj/edwinperez/plots_venus/venus_elongacion.pdf\"","\n"," ","]"}],",","\n"," ","graficaEventos",",","\n"," ","\"PDF\""}],"\n","]"}],";"}],RowBox[
+{"\n","\n"}],RowBox[{RowBox[{"Export","[","\n"," ",RowBox[{RowBox[{"CloudObject","[","\n","  ","\"https://www.wolframcloud.com/obj/edwinperez/plots_venus/venus_elongacion.tiff\"","\n"," ","]"}],",","\n"," ","graficaEventos",",","\n"," ","\"TIFF\"",",","\n"," ",RowBox[
+{"ImageResolution"," ","\[Rule]"," ","600"}]}],"\n","]"}],";"}]}],"Input",CellLabel -> "In[192]:= ",
+ExpressionUUID -> "6cd2b86e-6636-4c1a-8b4a-2b327cdd2724"]},StyleDefinitions -> "Default.nb",
+FrontEndVersion -> "15. for Wolfram Cloud 1.77.1 (August 27, 2026)"]
