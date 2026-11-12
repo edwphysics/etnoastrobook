@@ -12,8 +12,8 @@ set grad_per_cm 2.0
 set faintest_star_magnitude 10.0
 
 # Increase Stars Size
-set star_scaling 0.9
-set minimal_star_radius 0.03
+#set star_scaling 0.9
+#set minimal_star_radius 0.03
 
 # White background and black stars
 color background 1 1 1
@@ -31,11 +31,12 @@ color highlighted_boundaries 0 0 0
 color milky_way 0 0 0
 color labels 0 0 0
 color nebulae 0 0 0
-line_width constellation_lines 0.08
+color grid 0.8 0.8 0.8
+#line_width constellation_lines 0.08
 
 # Hide automatic labels, coordinate grid, ecliptic, and nebulae
 switch labels on
-switch grid off
+switch grid on
 switch ecliptic off
 switch nebulae off
 switch milky_way off
@@ -44,4 +45,11 @@ switch milky_way off
 #set faintest_star_with_label_magnitude 0.0
 
 objects_and_labels
-text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Marinai" at 6.2000 12.0000 color 0 0 0 ;
+
+text "$#3{\\rm h}#4{\\rm m}$" at 6.0000 -9.8000 along declination
+    tics rectascension 0.5 towards S ;
+
+text "$#5^\\circ$" at 6.1335 1.2000 along declination
+    tics declination 5 towards W ;
+
+text "\\LARGE\\bfseries Marinai" at 6.1335 12.2000 color 0 0 0 ;
