@@ -44,4 +44,4 @@ switch milky_way off
 #set faintest_star_with_label_magnitude 0.0
 
 objects_and_labels
-text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Najoco Uraco" at 4.6 58.6500 color 0 0 0 ;
+text "\\fontsize{35pt}{45pt}\\selectfont\\bfseries Najoco Uraco" at 4.6 57.6500 color 0 0 0 ;
